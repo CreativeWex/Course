@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Course
 {
-    class Ancestor // Для наследования всех классов кроме Contracts
+    class Ancestor
     {
-        string name; //Наименование
+        protected string name; //Наименование
 
         public Ancestor(string name)
         {
@@ -18,10 +18,10 @@ namespace Course
 
     class Branch:Ancestor // Класс филиал
     {
-        int code; // Код филиала
+        protected int code; // Код филиала
         // Наименование филиала наследуется
-        string adress;
-        string phoneNumber;
+        protected string adress;
+        protected string phoneNumber;
 
         public Branch(string name, int code, string adress, string phoneNumber) : base (name)
         {
@@ -29,21 +29,50 @@ namespace Course
             this.adress = adress;
             this.phoneNumber = phoneNumber;
         }
+
+
     }
 
-    class Branch : Ancestor // Класс филиал
+    class Agents : Branch // Класс агенты
     {
-        int code; // Код филиала
-        // Наименование филиала наследуется
-        string adress;
-        string phoneNumber;
+        //Имя от родителя
+        //Телефон от родителя
+        //Адрес от родителя
+        //Номер филиала от родителя
+        protected string surname;
+        protected string fatherName;
 
-        public Branch(string name, int code, string adress, string phoneNumber) : base(name)
+        public Agents(string name, int code, string adress, string phoneNumber, string surname, string fatherName) : base(name, code, adress, phoneNumber)
         {
-            this.code = code;
-            this.adress = adress;
-            this.phoneNumber = phoneNumber;
+            this.surname = surname;
+            this.fatherName = fatherName;
         }
     }
 
+    class InsuranceType : Ancestor // Вид страхования
+    {
+        protected string type; // Тип страхования
+        // Наименование филиала наследуется
+
+        public InsuranceType(string name, string type) : base(name)
+        {
+            this.type = type;
+        }
+    }
+
+    class Contract : InsuranceType // Контракт
+    {
+        int numberOfContract; //Номер договора
+        string date; // Дата заключения
+        double summ; // Страховая сумма
+        double tariffRate; // Тарифная ставка
+        string branch; // Филиал
+        //Вид страхования наследуется
+        //Имя клиента наследуется
+
+        public Contract(string name, string type) : base(name,type)
+        {
+            this.type = type;
+        }
+    }
 }
