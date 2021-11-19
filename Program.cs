@@ -17,7 +17,7 @@ namespace Course
 
             while (true)
             {
-                Console.Write("menu: ");
+                Console.Write("Введите значение: ");
                 try
                 {
                     menu = Convert.ToInt32(Console.ReadLine());
@@ -47,6 +47,7 @@ namespace Course
 
                 else if (menu == 3)
                 {
+                    Messages.AgentsChosenMessage();
                     BuildAgentsList objectAgents = new BuildAgentsList();
                     objectAgents.DisplayAgentsInfo();
 

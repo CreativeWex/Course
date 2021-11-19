@@ -83,8 +83,10 @@ namespace Course
 
         public void DisplayAgents()
         {
-            Console.Write($"ФИО {name}, Телефон = {phoneNumber}, Адрес = {adress}, Номер филиала = {code}, Дата Рождения {birthday}");
-            Console.WriteLine();
+            string output = String.Format("|{0,15}|{1,15}|{2,15}|{3,15}|{4,15}|{5,15}|", name, phoneNumber, adress, code, birthday);
+            Console.WriteLine(output);
+            //Console.WriteLine($"| {name} | {phoneNumber} | {adress} | Код филиала {code} | Дата Рождения {birthday} |");
+
         }
     }
 

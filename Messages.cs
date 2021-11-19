@@ -39,7 +39,12 @@ namespace Course
             Console.ForegroundColor = ConsoleColor.Blue;
             Console.Write(" 3");
             Console.ResetColor();
-            Console.WriteLine(", чтобы агенты");
+            Console.Write(", чтобы просмотреть список доступных ");
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.Write("агентов");
+            Console.ResetColor();
+            Console.WriteLine(";");
+
         }
 
         static public void CompanyMessage()
@@ -66,5 +71,17 @@ namespace Course
             Console.WriteLine("Программа завершила свою работу.");
         }
 
+
+
+
+
+        //Агенты
+        static public void AgentsChosenMessage()
+        {
+            Console.WriteLine();
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine("Список доступных агентов:");
+            Console.ResetColor();
+        }
     }
 }

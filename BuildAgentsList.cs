@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using ConsoleTables;
 
 namespace Course
 {
@@ -20,7 +21,7 @@ namespace Course
                 StreamReader test = new StreamReader(filename);
             }
             catch (Exception e)
-            {
+             {
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("Ошибка: " + e.Message);
                 Console.ResetColor();
@@ -69,13 +70,21 @@ namespace Course
             listSize = BuildedAgends.Count;
         }//конец конструктора
 
+        //public void DisplayAgentsInfo()
+        //{
+        //    for (int i = 0; i < listSize; i++)
+        //        BuildedAgends[i].DisplayAgents();
+        //}
+
         public void DisplayAgentsInfo()
         {
+            var table = new ConsoleTable("Имя", "Номер телефона", "Адресс", "Код филиала", "Дата рождения");
             for (int i = 0; i < listSize; i++)
-                BuildedAgends[i].DisplayAgents();
+            {
+                table.AddRow(BuildedAgends[i].Name, BuildedAgends[i].PhoneNumber, BuildedAgends[i].Adress, BuildedAgends[i].Code, BuildedAgends[i].Birthday);
+            }
+            table.Write(Format.Default);
         }
-
-
 
 
 
