@@ -7,11 +7,11 @@ using System.IO;
 
 namespace Course
 {
-    class BuildBranchList
+    class BuildAgentsList
     {
-        List<Branch> BuildedBranch = new List<Branch>();
+        List<Agents> BuildedAgends = new List<Agents>();
         int listSize;
-        string filename = "SourceBranch.txt";
+        string filename = "SourceAgents.txt";
 
         public bool CheckFile() // Проверка на открытие файла
         {
@@ -29,12 +29,13 @@ namespace Course
             return true;
         }
 
-        public BuildBranchList()
+        public BuildAgentsList()
         {
             string name = "";
             int code = 0; ;
             string adress = "";
             string phoneNumber = "";
+            string birthday = "";
 
             CheckFile();
             StreamReader input = new StreamReader(filename);
@@ -58,16 +59,20 @@ namespace Course
 
                 phoneNumber = input.ReadLine();
                 //проверка
-                BuildedBranch.Add(new Branch(name, code, adress, phoneNumber));
+
+                birthday = input.ReadLine();
+                //проверка
+
+                BuildedAgends.Add(new Agents(name, code, adress, phoneNumber, birthday));
             }
             input.Close();
-            listSize = BuildedBranch.Count;
+            listSize = BuildedAgends.Count;
         }//конец конструктора
 
-        public void DisplayBranchInfo()
+        public void DisplayAgentsInfo()
         {
             for (int i = 0; i < listSize; i++)
-                BuildedBranch[i].Display();
+                BuildedAgends[i].DisplayAgents();
         }
 
 

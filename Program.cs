@@ -34,19 +34,26 @@ namespace Course
                 if (menu == 1)
                 {
                     BuildContractList objectContract = new BuildContractList();
-                    
+                    objectContract.DisplayContractInfo();
 
                 }
 
-                if (menu == 2)
+                else if (menu == 2)
                 {
                     BuildBranchList objectBranch = new BuildBranchList();
                     objectBranch.DisplayBranchInfo();
 
                 }
 
+                else if (menu == 3)
+                {
+                    BuildAgentsList objectAgents = new BuildAgentsList();
+                    objectAgents.DisplayAgentsInfo();
 
-                if (menu == 0)
+                }
+
+
+                else if (menu == 0)
                     break;
             }
 

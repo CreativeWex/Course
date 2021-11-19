@@ -69,23 +69,22 @@ namespace Course
         //Телефон от родителя
         //Адрес от родителя
         //Номер филиала от родителя
-        protected string surname;
-        protected string fatherName;
+        protected string birthday;
 
-        public Agents(string name, int code, string adress, string phoneNumber, string surname, string fatherName) : base(name, code, adress, phoneNumber)
+        public Agents(string name, int code, string adress, string phoneNumber, string birthday) : base(name, code, adress, phoneNumber)
         {
-            this.surname = surname;
-            this.fatherName = fatherName;
+            this.birthday = birthday;
         }
 
-        public string Surname
+        public string Birthday
         {
-            get { return surname; }
+            get { return birthday; }
         }
 
-        public string FatherName
+        public void DisplayAgents()
         {
-            get { return fatherName; }
+            Console.Write($"ФИО {name}, Телефон = {phoneNumber}, Адрес = {adress}, Номер филиала = {code}, Дата Рождения {birthday}");
+            Console.WriteLine();
         }
     }
 

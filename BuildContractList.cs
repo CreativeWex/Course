@@ -104,14 +104,11 @@ namespace Course
             input.Close();
             listSize = BuildedContract.Count;
         } // конец конструктора
-
-        //public void DisplayContractInfo()
-        //{
-        //    for (int i = 0; i < listSize; i++)
-        //    {
-        //        Console.WriteLine($"Тип страхования = {BuildedContract[i].InsuranceType}")
-        //    }
-        //}
+        public void DisplayContractInfo()
+        {
+            for (int i = 0; i < listSize; i++)
+                BuildedContract[i].Display();
+        }
 
     }// Конец класса
 
