@@ -52,6 +52,11 @@ namespace Course
         {
             get { return phoneNumber; }
         }
+        public void Display()
+        {
+            Console.Write($"|Филиал = {name}, Код = {code}, Адрес = {adress}, Телефон = {phoneNumber} |");
+            Console.WriteLine();
+        }
     }
 
 

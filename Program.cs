@@ -38,7 +38,12 @@ namespace Course
 
                 }
 
+                if (menu == 2)
+                {
+                    BuildBranchList objectBranch = new BuildBranchList();
+                    objectBranch.DisplayBranchInfo();
 
+                }
 
 
                 if (menu == 0)

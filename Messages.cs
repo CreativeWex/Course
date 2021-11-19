@@ -28,6 +28,12 @@ namespace Course
             Console.Write(" 1");
             Console.ResetColor();
             Console.WriteLine(", чтобы контракт");
+
+            Console.Write("Введите");
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.Write(" 2");
+            Console.ResetColor();
+            Console.WriteLine(", чтобы филиал");
         }
         static public void CompanyMessage()
         {

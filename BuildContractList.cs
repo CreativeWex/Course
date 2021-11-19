@@ -7,7 +7,7 @@ using System.IO;
 
 namespace Course
 {
-    class BuildContractList
+    class BuildContractList //КАК Я ХОЧУ СДОХНУТЬ
     {
         List<Contract> BuildedContract = new List<Contract>();
         int listSize;
@@ -29,25 +29,25 @@ namespace Course
             return true;
         }
 
-        public bool checkSurname(string surname) // Правильно ли введена фамилия
-        {
-            int error = 0;
+        //public bool checkSurname(string surname) // Правильно ли введена фамилия
+        //{
+        //    int error = 0;
 
-            if (surname == null)
-                error++;
-            for (int i = 0; i < surname.Length; i++)
-                if (Char.IsDigit(surname[i]))
-                    error++;
-            if (error == 0)
-                return false;
-            else
-            {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("Error in surname");
-                Console.ResetColor();
-                return true;
-            }
-        }
+        //    if (surname == null)
+        //        error++;
+        //    for (int i = 0; i < surname.Length; i++)
+        //        if (Char.IsDigit(surname[i]))
+        //            error++;
+        //    if (error == 0)
+        //        return false;
+        //    else
+        //    {
+        //        Console.ForegroundColor = ConsoleColor.Red;
+        //        Console.WriteLine("Error in surname");
+        //        Console.ResetColor();
+        //        return true;
+        //    }
+        //}
         public BuildContractList()
         {
             int numberOfContract; //Номер договора
@@ -99,7 +99,6 @@ namespace Course
                 name = input.ReadLine();
 
 
-                //date = ""; summ = 0; tariffRate = 1; branch = ""; insuranceType = "";                                  //Затычка
                 BuildedContract.Add(new Contract(name, insuranceType, numberOfContract, date, summ, tariffRate, branch));                                                          //создание элемента списка
             }
             input.Close();
