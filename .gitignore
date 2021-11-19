@@ -1,4 +1,8 @@
-bin
+bin/Release
+bin/Debug/Course.exe
+bin/Debug/Course.exe.config
+bin/Debug/Course.pdb
+bin/Debug/
 obj
 Properties
 App.config
