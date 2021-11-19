@@ -16,6 +16,10 @@ namespace Course
         }
     }
 
+
+
+
+
     class Branch:Ancestor // Класс филиал
     {
         protected int code; // Код филиала
@@ -50,6 +54,10 @@ namespace Course
         }
     }
 
+
+
+
+
     class Agents : Branch // Класс агенты
     {
         //Имя от родителя
@@ -76,6 +84,10 @@ namespace Course
         }
     }
 
+
+
+
+
     class InsuranceType : Ancestor // Вид страхования
     {
         protected string type; // Тип страхования
@@ -89,20 +101,25 @@ namespace Course
         public string Type
         {
             get { return type; }
+            set { type = value; }
         }
     }
+
+
+
+
 
     class Contract : InsuranceType // Контракт
     {
         int numberOfContract; //Номер договора
         string date; // Дата заключения
-        double summ; // Страховая сумма
+        int summ; // Страховая сумма
         double tariffRate; // Тарифная ставка
         string branch; // Филиал
         //Вид страхования наследуется
         //Имя клиента наследуется
 
-        public Contract(string name, string type) : base(name,type)
+        public Contract(string name, string type, int numberOfContract, string date, int summ, double tariffRate, string branch) : base(name,type)
         {
             this.type = type;
         }
@@ -117,7 +134,7 @@ namespace Course
             get { return date; }
         }
 
-        public double Summ
+        public int Summ
         {
             get { return summ; }
         }
@@ -129,6 +146,11 @@ namespace Course
         public string Branch
         {
             get { return branch; }
+        }
+
+        public void Display()
+        {
+            Console.WriteLine($"|Номер договора: {numberOfContract}, дата заключения договора: {date}, страховая сумма: {summ}, тарифная ставка {tariffRate}, филиал {branch}, вид страхования {type} |");
         }
     }
 }

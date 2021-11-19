@@ -34,7 +34,7 @@ namespace Course
                 if (menu == 1)
                 {
                     BuildContractList objectContract = new BuildContractList();
-                    objectContract.Print();
+                    
 
                 }
 
