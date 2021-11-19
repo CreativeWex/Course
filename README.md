@@ -2,13 +2,13 @@
 
 ## To do list:
 
-## Задание
-
-![Задание](C:\Users\user\source\repos\Course\Course)
-
 Класс Contract
 - Проверка на фиксированное количество знаков
 - Проверка переменных
+
+## Задание
+
+[![Задание](https://github.com/CreativeWex/Course/blob/master/task.png)]
 
 <br>
 
