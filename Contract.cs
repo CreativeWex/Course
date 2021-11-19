@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace Course
 {
@@ -59,5 +60,4 @@ namespace Course
 			Console.WriteLine($"|Номер договора: {numberOfContract}, дата заключения договора: {date}, страховая сумма: {summ}, тарифная ставка {tariffRate}, филиал {branch}, вид страхования {insuranceType} |");
 		}
 	}
-
 }
