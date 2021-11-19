@@ -30,7 +30,24 @@ namespace Course
             this.phoneNumber = phoneNumber;
         }
 
+        public string Name
+        {
+            get { return name; }
+        }
+        public int Code
+        {
+            get{ return code; }
+        }
 
+        public string Adress
+        {
+            get{ return adress; }
+        }
+
+        public string PhoneNumber
+        {
+            get { return phoneNumber; }
+        }
     }
 
     class Agents : Branch // Класс агенты
@@ -47,6 +64,16 @@ namespace Course
             this.surname = surname;
             this.fatherName = fatherName;
         }
+
+        public string Surname
+        {
+            get { return surname; }
+        }
+
+        public string FatherName
+        {
+            get { return fatherName; }
+        }
     }
 
     class InsuranceType : Ancestor // Вид страхования
@@ -57,6 +84,11 @@ namespace Course
         public InsuranceType(string name, string type) : base(name)
         {
             this.type = type;
+        }
+
+        public string Type
+        {
+            get { return type; }
         }
     }
 
@@ -73,6 +105,30 @@ namespace Course
         public Contract(string name, string type) : base(name,type)
         {
             this.type = type;
+        }
+
+        public int NumberOfContract
+        {
+            get { return numberOfContract; }
+        }
+
+        public string Date
+        {
+            get { return date; }
+        }
+
+        public double Summ
+        {
+            get { return summ; }
+        }
+
+        public double TariffRate
+        {
+            get { return tariffRate; }
+        }
+        public string Branch
+        {
+            get { return branch; }
         }
     }
 }
