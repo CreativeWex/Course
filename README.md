@@ -2,6 +2,10 @@
 
 ## To do list:
 
+## Задание
+
+![Задание](C:\Users\user\source\repos\Course\Course)
+
 Класс Contract
 - Проверка на фиксированное количество знаков
 - Проверка переменных
