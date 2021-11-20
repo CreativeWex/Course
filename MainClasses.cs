@@ -14,6 +14,11 @@ namespace Course
         {
             this.name = name;
         }
+
+        public string Name
+        {
+            get { return name; }
+        }
     }
 
 
@@ -34,10 +39,7 @@ namespace Course
             this.phoneNumber = phoneNumber;
         }
 
-        public string Name
-        {
-            get { return name; }
-        }
+
         public int Code
         {
             get{ return code; }
@@ -51,11 +53,6 @@ namespace Course
         public string PhoneNumber
         {
             get { return phoneNumber; }
-        }
-        public void Display()
-        {
-            Console.Write($"|Филиал = {name}, Код = {code}, Адрес = {adress}, Телефон = {phoneNumber} |");
-            Console.WriteLine();
         }
     }
 
@@ -80,14 +77,6 @@ namespace Course
         {
             get { return birthday; }
         }
-
-        public void DisplayAgents()
-        {
-            string output = String.Format("|{0,15}|{1,15}|{2,15}|{3,15}|{4,15}|{5,15}|", name, phoneNumber, adress, code, birthday);
-            Console.WriteLine(output);
-            //Console.WriteLine($"| {name} | {phoneNumber} | {adress} | Код филиала {code} | Дата Рождения {birthday} |");
-
-        }
     }
 
 
@@ -107,7 +96,6 @@ namespace Course
         public string Type
         {
             get { return type; }
-            set { type = value; }
         }
     }
 
@@ -152,11 +140,6 @@ namespace Course
         public string Branch
         {
             get { return branch; }
-        }
-
-        public void Display()
-        {
-            Console.WriteLine($"|Номер договора: {numberOfContract}, дата заключения договора: {date}, страховая сумма: {summ}, тарифная ставка {tariffRate}, филиал {branch}, вид страхования {type} |");
         }
     }
 }

@@ -27,13 +27,21 @@ namespace Course
             Console.ForegroundColor = ConsoleColor.Blue;
             Console.Write(" 1");
             Console.ResetColor();
-            Console.WriteLine(", чтобы контракт");
+            Console.Write(", чтобы просмотреть список доступных ");
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.Write("контрактов");
+            Console.ResetColor();
+            Console.WriteLine(";");
 
             Console.Write("Введите");
             Console.ForegroundColor = ConsoleColor.Blue;
             Console.Write(" 2");
             Console.ResetColor();
-            Console.WriteLine(", чтобы филиал");
+            Console.Write(", чтобы просмотреть список доступных ");
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.Write("филиалов");
+            Console.ResetColor();
+            Console.WriteLine(";");
 
             Console.Write("Введите");
             Console.ForegroundColor = ConsoleColor.Blue;
@@ -80,7 +88,14 @@ namespace Course
         {
             Console.WriteLine();
             Console.ForegroundColor = ConsoleColor.Blue;
-            Console.WriteLine("Список доступных агентов:");
+            Console.WriteLine("Список доступных агентов:\n");
+            Console.ResetColor();
+        }
+        static public void BranchChosenMessage()
+        {
+            Console.WriteLine();
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine("Список филиалов:\n");
             Console.ResetColor();
         }
     }

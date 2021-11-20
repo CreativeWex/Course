@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using ConsoleTables;
 
 namespace Course
 {
@@ -104,14 +105,17 @@ namespace Course
             input.Close();
             listSize = BuildedContract.Count;
         } // конец конструктора
+
         public void DisplayContractInfo()
         {
+            var table = new ConsoleTable("Номер договора", "Дата заключения", "Страховая сумма", "Тарифная ставка", "Филиал", "Вид страхования", "Имя Клиента");
             for (int i = 0; i < listSize; i++)
-                BuildedContract[i].Display();
+            {
+                table.AddRow(BuildedContract[i].NumberOfContract, BuildedContract[i].Date, BuildedContract[i].Summ, BuildedContract[i].TariffRate, BuildedContract[i].Branch, BuildedContract[i].Type, BuildedContract[i].Name);
+            }
+            table.Write(Format.Default);
+            Console.WriteLine();
         }
 
     }// Конец класса
-
-
-
 }

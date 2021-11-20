@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using ConsoleTables;
 
 namespace Course
 {
@@ -66,13 +67,14 @@ namespace Course
 
         public void DisplayBranchInfo()
         {
+            var table = new ConsoleTable("Филиал", "Код филиала", "Адрес", "Телефон");
             for (int i = 0; i < listSize; i++)
-                BuildedBranch[i].Display();
+            {
+                table.AddRow(BuildedBranch[i].Name, BuildedBranch[i].Code, BuildedBranch[i].Adress, BuildedBranch[i].PhoneNumber);
+            }
+            table.Write(Format.Default);
+            Console.WriteLine();
         }
-
-
-
-
 
 
 

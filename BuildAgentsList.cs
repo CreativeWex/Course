@@ -70,20 +70,15 @@ namespace Course
             listSize = BuildedAgends.Count;
         }//конец конструктора
 
-        //public void DisplayAgentsInfo()
-        //{
-        //    for (int i = 0; i < listSize; i++)
-        //        BuildedAgends[i].DisplayAgents();
-        //}
-
         public void DisplayAgentsInfo()
         {
-            var table = new ConsoleTable("Имя", "Номер телефона", "Адресс", "Код филиала", "Дата рождения");
+            var table = new ConsoleTable("Имя", "Номер телефона", "Адрес", "Код филиала", "Дата рождения");
             for (int i = 0; i < listSize; i++)
             {
                 table.AddRow(BuildedAgends[i].Name, BuildedAgends[i].PhoneNumber, BuildedAgends[i].Adress, BuildedAgends[i].Code, BuildedAgends[i].Birthday);
             }
             table.Write(Format.Default);
+            Console.WriteLine();
         }
 
 

@@ -17,7 +17,7 @@ namespace Course
 
             while (true)
             {
-                Console.Write("Введите значение: ");
+                Console.Write(">");
                 try
                 {
                     menu = Convert.ToInt32(Console.ReadLine());
@@ -36,12 +36,17 @@ namespace Course
                     BuildContractList objectContract = new BuildContractList();
                     objectContract.DisplayContractInfo();
 
+
                 }
 
                 else if (menu == 2)
                 {
+                    Messages.BranchChosenMessage();
                     BuildBranchList objectBranch = new BuildBranchList();
                     objectBranch.DisplayBranchInfo();
+
+
+
 
                 }
 
@@ -50,6 +55,8 @@ namespace Course
                     Messages.AgentsChosenMessage();
                     BuildAgentsList objectAgents = new BuildAgentsList();
                     objectAgents.DisplayAgentsInfo();
+
+
 
                 }
 
