@@ -8,50 +8,15 @@ using ConsoleTables;
 
 namespace Course
 {
-    class BuildContractList //КАК Я ХОЧУ СДОХНУТЬ
+    class BuildContractList
     {
         List<Contract> BuildedContract = new List<Contract>();
         int listSize;
         string filename = "SourceContract.txt";
 
-        public bool CheckFile() // Проверка на открытие файла
+        public BuildContractList(ref int errorFlag)
         {
-            try
-            {
-                StreamReader test = new StreamReader(filename);
-            }
-            catch (Exception e)
-            {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("Ошибка: " + e.Message);
-                Console.ResetColor();
-                return false;
-            }
-            return true;
-        }
-
-        //public bool checkSurname(string surname) // Правильно ли введена фамилия
-        //{
-        //    int error = 0;
-
-        //    if (surname == null)
-        //        error++;
-        //    for (int i = 0; i < surname.Length; i++)
-        //        if (Char.IsDigit(surname[i]))
-        //            error++;
-        //    if (error == 0)
-        //        return false;
-        //    else
-        //    {
-        //        Console.ForegroundColor = ConsoleColor.Red;
-        //        Console.WriteLine("Error in surname");
-        //        Console.ResetColor();
-        //        return true;
-        //    }
-        //}
-        public BuildContractList()
-        {
-            int numberOfContract; //Номер договора
+            string numberOfContract; //Номер договора
             string date; // Дата заключения
             int summ; // Страховая сумма
             double tariffRate; // Тарифная ставка
@@ -59,51 +24,79 @@ namespace Course
             string insuranceType; //Вид страхования
             string name; // Имя Клиента
 
-            CheckFile();
+            CatchErrors.CheckFile(filename);
             StreamReader input = new StreamReader(filename);
 
             while (!(input.EndOfStream))
             {
-                //if (!Int32.TryParse(input.ReadLine(), out numberOfContract))                                            //Номер договора
-                //{
-                //    Console.ForegroundColor = ConsoleColor.Red;
-                //    Console.WriteLine("Ошибка в номере договора");
-                //    Console.ResetColor();
-                //    break;
-                //}
-                Int32.TryParse(input.ReadLine(), out numberOfContract);
-
-                date = input.ReadLine();                                                                            //Дата заключения
-
-                if (!Int32.TryParse(input.ReadLine(), out summ))                                            //Страховая сумма
+                numberOfContract = input.ReadLine();
+                if (CatchErrors.CheckContractNumber(numberOfContract))
                 {
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("Ошибка в номере договора");
-                    Console.ResetColor();
+                    Messages.ErrorContractNumber();
+                    errorFlag = 1;
                     break;
                 }
-                Int32.TryParse(input.ReadLine(), out summ);
 
-                if (!Double.TryParse(input.ReadLine(), out tariffRate))                                            //Тарифная ставка
+                date = input.ReadLine();
+                if (CatchErrors.CheckDate(date))
                 {
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("Ошибка в номере договора");
-                    Console.ResetColor();
+                    Messages.ErrorDate();
+                    errorFlag = 1;
                     break;
                 }
-                Double.TryParse(input.ReadLine(), out tariffRate);
 
-                branch = input.ReadLine();                                                                                //Филиал
 
-                insuranceType = input.ReadLine();                                                                       //Вид страхования
+                if (!Int32.TryParse(input.ReadLine(), out summ))
+                {
+                    Messages.ErrorSumm();
+                    errorFlag = 1;
+                    break;
+                }
+                if (CatchErrors.IsNegative(summ))
+                {
+                    Messages.ErrorSumm();
+                    errorFlag = 1;
+                    break;
+                }
+
+
+                if (!Double.TryParse(input.ReadLine(), out tariffRate))
+                {
+                    Messages.ErrorTariffRate();
+                    errorFlag = 1;
+                    break;
+                }
+                if (CatchErrors.IsNegative(tariffRate) || tariffRate > 100)
+                {
+                    Messages.ErrorTariffRate();
+                    errorFlag = 1;
+                    break;
+                }
+
+                branch = input.ReadLine();                                                                               
+                if (CatchErrors.CheckName(branch))
+                {
+                    Messages.ErrorString();
+                    errorFlag = 1;
+                    break;
+                }
+
+                insuranceType = input.ReadLine();              //------------------------------------------------СДеЛАТЬ ПРОВЕРКУ
 
                 name = input.ReadLine();
+                if (CatchErrors.CheckName(name))
+                {
+                    Messages.ErrorString();
+                    errorFlag = 1;
+                    break;
+                }
 
-
-                BuildedContract.Add(new Contract(name, insuranceType, numberOfContract, date, summ, tariffRate, branch));                                                          //создание элемента списка
+                BuildedContract.Add(new Contract(name, insuranceType, numberOfContract, date, summ, tariffRate, branch));                                                          
             }
+
             input.Close();
             listSize = BuildedContract.Count;
+
         } // конец конструктора
 
         public void DisplayContractInfo()

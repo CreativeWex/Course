@@ -17,13 +17,12 @@ namespace Course
 
         public string Name
         {
-            get { return name; }
+            get
+            {
+                return name;
+            }
         }
     }
-
-
-
-
 
     class Branch:Ancestor // Класс филиал
     {
@@ -39,26 +38,30 @@ namespace Course
             this.phoneNumber = phoneNumber;
         }
 
-
         public int Code
         {
-            get{ return code; }
+            get
+            {
+                return code;
+            }
         }
 
         public string Adress
         {
-            get{ return adress; }
+            get
+            {
+                return adress;
+            }
         }
 
         public string PhoneNumber
         {
-            get { return phoneNumber; }
+            get
+            {
+                return phoneNumber;
+            }
         }
     }
-
-
-
-
 
     class Agents : Branch // Класс агенты
     {
@@ -79,10 +82,6 @@ namespace Course
         }
     }
 
-
-
-
-
     class InsuranceType : Ancestor // Вид страхования
     {
         protected string type; // Тип страхования
@@ -99,13 +98,9 @@ namespace Course
         }
     }
 
-
-
-
-
     class Contract : InsuranceType // Контракт
     {
-        int numberOfContract; //Номер договора
+        string numberOfContract; //Номер договора
         string date; // Дата заключения
         int summ; // Страховая сумма
         double tariffRate; // Тарифная ставка
@@ -113,33 +108,49 @@ namespace Course
         //Вид страхования наследуется
         //Имя клиента наследуется
 
-        public Contract(string name, string type, int numberOfContract, string date, int summ, double tariffRate, string branch) : base(name,type)
+        public Contract(string name, string type, string numberOfContract, string date, int summ, double tariffRate, string branch) : base(name,type)
         {
             this.type = type;
         }
 
-        public int NumberOfContract
+        public string NumberOfContract
         {
-            get { return numberOfContract; }
+            get
+            {
+                return numberOfContract;
+            }
         }
 
         public string Date
         {
-            get { return date; }
+            get
+            {
+                return date;
+            }
         }
 
         public int Summ
         {
-            get { return summ; }
+            get
+            {
+                return summ;
+            }
         }
 
         public double TariffRate
         {
-            get { return tariffRate; }
+            get
+            {
+                return tariffRate;
+            }
         }
         public string Branch
         {
-            get { return branch; }
+            get
+            {
+                return branch;
+            }
         }
+
     }
 }

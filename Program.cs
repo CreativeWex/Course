@@ -11,13 +11,14 @@ namespace Course
         static void Main(string[] args)
         {
             int menu = 10;
+            int errorFlag = 0;
 
             Messages.CompanyMessage();
             Messages.MenuMessage();
 
-            while (true)
+            while (menu != 0)
             {
-                Console.Write(">");
+                Console.Write("> ");
                 try
                 {
                     menu = Convert.ToInt32(Console.ReadLine());
@@ -31,40 +32,52 @@ namespace Course
 
                 }
 
+
                 if (menu == 1)
                 {
-                    BuildContractList objectContract = new BuildContractList();
-                    objectContract.DisplayContractInfo();
+                    Console.Clear();
+                    Messages.ChosenContractMessage();
 
+                    BuildContractList objectContract = new BuildContractList(ref errorFlag);
+
+                    if (errorFlag == 1)
+                        break;
+
+                    objectContract.DisplayContractInfo();
+                    Messages.MenuMessage();
 
                 }
 
                 else if (menu == 2)
                 {
-                    Messages.BranchChosenMessage();
-                    BuildBranchList objectBranch = new BuildBranchList();
+                    Console.Clear();
+                    Messages.ChosenBranchMessage();
+
+                    BuildBranchList objectBranch = new BuildBranchList(ref errorFlag);
+
+                    if (errorFlag == 1)
+                        break;
+
                     objectBranch.DisplayBranchInfo();
-
-
-
+                    Messages.MenuMessage();
 
                 }
 
                 else if (menu == 3)
                 {
-                    Messages.AgentsChosenMessage();
-                    BuildAgentsList objectAgents = new BuildAgentsList();
+                    Console.Clear();
+                    Messages.ChosenAgentsMessage();
+
+                    BuildAgentsList objectAgents = new BuildAgentsList(ref errorFlag);
+
+                    if (errorFlag == 1)
+                        break;
+
                     objectAgents.DisplayAgentsInfo();
-
-
+                    Messages.MenuMessage();
 
                 }
-
-
-                else if (menu == 0)
-                    break;
             }
-
 
             Messages.EndOfProgramm();
             Console.ReadKey();
