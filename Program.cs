@@ -77,8 +77,15 @@ namespace Course
                     Messages.MenuMessage();
 
                 }
-            }
 
+                else if (menu == 9)
+                {
+                    Console.Clear();
+                    Messages.AuthorInfo();
+                    Messages.MenuMessage();
+
+                }
+            }
             Messages.EndOfProgramm();
             Console.ReadKey();
         }

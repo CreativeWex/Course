@@ -20,7 +20,7 @@ namespace Course
             string date; // Дата заключения
             int summ; // Страховая сумма
             double tariffRate; // Тарифная ставка
-            string branch; // Филиал
+            int branch; // Филиал
             string insuranceType; //Вид страхования
             string name; // Имя Клиента
 
@@ -73,15 +73,26 @@ namespace Course
                     break;
                 }
 
-                branch = input.ReadLine();                                                                               
-                if (CatchErrors.CheckName(branch))
+                if (!Int32.TryParse(input.ReadLine(), out branch))
                 {
-                    Messages.ErrorString();
+                    Messages.ErrorBranchName();
+                    errorFlag = 1;
+                    break;
+                }
+                if (CatchErrors.IsNegative(branch))
+                {
+                    Messages.ErrorBranchName();
                     errorFlag = 1;
                     break;
                 }
 
-                insuranceType = input.ReadLine();              //------------------------------------------------СДеЛАТЬ ПРОВЕРКУ
+                insuranceType = input.ReadLine();
+                if (CatchErrors.CheckInsuranceType(insuranceType))
+                {
+                    Messages.ErrorInsuranceType();
+                    errorFlag = 1;
+                    break;
+                }
 
                 name = input.ReadLine();
                 if (CatchErrors.CheckName(name))
@@ -101,7 +112,7 @@ namespace Course
 
         public void DisplayContractInfo()
         {
-            var table = new ConsoleTable("Номер договора", "Дата заключения", "Страховая сумма", "Тарифная ставка", "Филиал", "Вид страхования", "Имя Клиента");
+            var table = new ConsoleTable("Номер договора", "Дата заключения", "Страховая сумма", "Тарифная ставка", "Код филиала", "Вид страхования", "Имя Клиента");
             for (int i = 0; i < listSize; i++)
             {
                 table.AddRow(BuildedContract[i].NumberOfContract, BuildedContract[i].Date, BuildedContract[i].Summ, BuildedContract[i].TariffRate, BuildedContract[i].Branch, BuildedContract[i].Type, BuildedContract[i].Name);

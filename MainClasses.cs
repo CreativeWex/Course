@@ -104,11 +104,11 @@ namespace Course
         string date; // Дата заключения
         int summ; // Страховая сумма
         double tariffRate; // Тарифная ставка
-        string branch; // Филиал
+        int branch; // Филиал
         //Вид страхования наследуется
         //Имя клиента наследуется
 
-        public Contract(string name, string type, string numberOfContract, string date, int summ, double tariffRate, string branch) : base(name,type)
+        public Contract(string name, string type, string numberOfContract, string date, int summ, double tariffRate, int branch) : base(name,type)
         {
             this.type = type;
         }
@@ -144,7 +144,7 @@ namespace Course
                 return tariffRate;
             }
         }
-        public string Branch
+        public int Branch
         {
             get
             {

@@ -51,6 +51,16 @@ namespace Course
             Console.ResetColor();
             Console.WriteLine(";");
 
+            Console.Write("Введите");
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.Write(" 9");
+            Console.ResetColor();
+            Console.Write(", для информации об");
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.Write(" Авторе");
+            Console.ResetColor();
+            Console.WriteLine(";");
+
         }
 
         //--------------------------------------------------------------------------------Прочее------------------------------------------------------------   
@@ -77,6 +87,27 @@ namespace Course
             Console.WriteLine("[Программа завершила свою работу]");
         }
 
+        static public void AuthorInfo()
+        {
+            Console.ForegroundColor = ConsoleColor.Yellow;
+
+            Console.WriteLine(" _____                                _____ _ _   _ _      ");
+            Console.WriteLine("| __  |___ ___ ___ ___ ___ ___ _ _   |   | |_| |_|_| |_ ___ ");
+            Console.WriteLine("| __ -| -_|  _| -_|- _|   | -_| | |  | | | | | '_| |  _| .'|");
+            Console.WriteLine("|_____|___|_| |___|___|_|_|___|\\_/   |_|___|_|_,_|_|_| |__,|");
+
+            Console.WriteLine();
+
+            Console.WriteLine("             _       ___       ___ ___ ");
+            Console.WriteLine(" ___ ___ _ _| |_ ___|_  |  ___|_  |   |");
+            Console.WriteLine("| . | . | | |  _|___|_| |_|___|  _| | |");
+            Console.WriteLine("|  _|___|\\_/|_|     |_____|   |___|___|");
+            Console.WriteLine("|_|");
+
+            Console.WriteLine();
+            Console.ResetColor();
+                                                                  
+        }
         //-----------------------------------------------------------------------Выбор пункта в меню----------------------------------------------------------------------------
         static public void ChosenAgentsMessage()
         {
@@ -148,6 +179,13 @@ namespace Course
         {
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("[!] Ошибка в формате Cтраховой суммы\n");
+            Console.ResetColor();
+        }
+
+        static public void ErrorInsuranceType()
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("[!] Ошибка в формате Вида страхования\n");
             Console.ResetColor();
         }
     }

@@ -40,6 +40,12 @@ namespace Course
                     errorFlag = 1;
                     break;
                 }
+                if (CatchErrors.IsNegative(code))
+                {
+                    Messages.ErrorBranchName();
+                    errorFlag = 1;
+                    break;
+                }
 
                 adress = input.ReadLine();
 
