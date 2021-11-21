@@ -63,6 +63,14 @@ namespace Course
             listSize = BuildedBranch.Count;
         }
 
+        public List<Branch> Branch
+        {
+            get
+            {
+                return BuildedBranch;
+            }
+        }
+
         public void DisplayBranchInfo()
         {
             var table = new ConsoleTable("Филиал", "Код филиала", "Адрес", "Телефон");

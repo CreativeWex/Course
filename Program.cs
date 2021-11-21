@@ -78,6 +78,17 @@ namespace Course
 
                 }
 
+                else if (menu == 8)
+                {
+                    Console.Clear();
+                    BuildBranchList objectBranch = new BuildBranchList(ref errorFlag);
+                    objectBranch.DisplayBranchInfo();
+                    Console.WriteLine("Сортировка");
+                    Sorts.Sort(objectBranch.Branch, 0);
+                    objectBranch.DisplayBranchInfo();
+
+                }
+
                 else if (menu == 9)
                 {
                     Console.Clear();

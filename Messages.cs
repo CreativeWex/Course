@@ -15,23 +15,23 @@ namespace Course
             Console.WriteLine("[Меню]");
             Console.ResetColor();
 
-            Console.Write("Введите");
+            Console.Write(" Введите");
             Console.ForegroundColor = ConsoleColor.Blue;
             Console.Write(" 0");
             Console.ResetColor();
             Console.WriteLine(", чтобы закрыть меню");
 
-            Console.Write("Введите");
+            Console.Write(" Введите");
             Console.ForegroundColor = ConsoleColor.Blue;
             Console.Write(" 1");
             Console.ResetColor();
             Console.Write(", чтобы просмотреть список доступных ");
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.Write("контрактов");
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.Write("договоров");
             Console.ResetColor();
             Console.WriteLine(";");
 
-            Console.Write("Введите");
+            Console.Write(" Введите");
             Console.ForegroundColor = ConsoleColor.Blue;
             Console.Write(" 2");
             Console.ResetColor();
@@ -41,7 +41,7 @@ namespace Course
             Console.ResetColor();
             Console.WriteLine(";");
 
-            Console.Write("Введите");
+            Console.Write(" Введите");
             Console.ForegroundColor = ConsoleColor.Blue;
             Console.Write(" 3");
             Console.ResetColor();
@@ -51,7 +51,7 @@ namespace Course
             Console.ResetColor();
             Console.WriteLine(";");
 
-            Console.Write("Введите");
+            Console.Write(" Введите");
             Console.ForegroundColor = ConsoleColor.Blue;
             Console.Write(" 9");
             Console.ResetColor();

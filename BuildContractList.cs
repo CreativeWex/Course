@@ -113,10 +113,12 @@ namespace Course
         public void DisplayContractInfo()
         {
             var table = new ConsoleTable("Номер договора", "Дата заключения", "Страховая сумма", "Тарифная ставка", "Код филиала", "Вид страхования", "Имя Клиента");
+
             for (int i = 0; i < listSize; i++)
             {
                 table.AddRow(BuildedContract[i].NumberOfContract, BuildedContract[i].Date, BuildedContract[i].Summ, BuildedContract[i].TariffRate, BuildedContract[i].Branch, BuildedContract[i].Type, BuildedContract[i].Name);
             }
+
             table.Write(Format.Default);
             Console.WriteLine();
         }

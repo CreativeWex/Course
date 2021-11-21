@@ -110,7 +110,11 @@ namespace Course
 
         public Contract(string name, string type, string numberOfContract, string date, int summ, double tariffRate, int branch) : base(name,type)
         {
-            this.type = type;
+            this.numberOfContract = numberOfContract;
+            this.date = date;
+            this.summ = summ;
+            this.tariffRate = tariffRate;
+            this.branch = branch;
         }
 
         public string NumberOfContract
