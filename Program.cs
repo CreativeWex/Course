@@ -8,6 +8,10 @@ namespace Course
 {
     class Program
     {
+        static bool unlockContract = false;
+        static bool unlockBranch = false;
+        static bool unlockAgents = false;
+
         public static void TryCatch(ref int menu)
         {
             Console.Write("> ");
@@ -22,7 +26,7 @@ namespace Course
                 Console.ResetColor();
             }
         } 
-        public static void Data()
+        public static void Data(ref bool unlocked)
         {
             int submenu = 10;
 
@@ -34,24 +38,31 @@ namespace Course
 
                 if (submenu == 0)
                 {
-                    DataMenu.Exit();
+                    DataMenu.Exit(unlockContract, unlockBranch, unlockAgents);
+                    if (unlockContract == true && unlockBranch == true && unlockAgents == true)
+                    {
+                        unlocked = true;
+                    }
                     break;
                 }
 
                 else if (submenu == 1)
                 {
+                    unlockContract = true;
                     if (DataMenu.Contract())
                         break;
                 }
 
                 else if (submenu == 2)
                 {
+                    unlockBranch = true;
                     if (DataMenu.Branch())
                         break;
                 }
 
                 else if (submenu == 3)
                 {
+                    unlockAgents = true;
                     if (DataMenu.Agents())
                         break;
                 }
@@ -75,9 +86,10 @@ namespace Course
         static void Main(string[] args)
         {
             int menu = 10;
+            bool unlocked = false;
 
             MainMenu.CompanyMessage();
-            MainMenu.General();
+            MainMenu.GeneralLocked();
 
             while (menu != 0)
             {
@@ -85,10 +97,15 @@ namespace Course
 
                 if (menu == 1)
                 {
-                    Data();
+                    Data(ref unlocked);
                 }
 
-                if (menu == 3)
+                else if (menu == 3 && unlocked == false)
+                {
+                    MainMenu.IsntUnlocked();
+                }
+
+                else if (menu == 3)
                 {
                     Salary();
                 }

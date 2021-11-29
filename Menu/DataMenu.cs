@@ -29,9 +29,15 @@ namespace Course
             Console.WriteLine("Список контрактов:\n");
             Console.ResetColor();
         }
-        static public void Exit()
+        static public void Exit(bool unlockContract, bool unlockBranch, bool unlockAgents)
         {
             Console.Clear();
+            if (unlockContract == false || unlockBranch == false || unlockAgents == false)
+            {
+                MainMenu.GeneralLocked();
+                return;
+            }
+                
             MainMenu.General();
         }
         static public bool Contract()

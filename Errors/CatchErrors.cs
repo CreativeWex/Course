@@ -29,6 +29,7 @@ namespace Course
             {
                 StreamReader test = new StreamReader(filename);
             }
+
             catch (Exception e)
             {
                 Console.ForegroundColor = ConsoleColor.Red;
@@ -39,7 +40,6 @@ namespace Course
 
             return true;
         }
-
         public static bool CheckName(string str) //Проверка поступающих строк
         {
             for (int i = 0; i < str.Length; i++)
@@ -57,7 +57,6 @@ namespace Course
 
             return false;
         }
-
         public static bool CheckPhoneNumber(string str) //телефон
         {
             for (int i = 0; i < str.Length; i++)
@@ -75,7 +74,6 @@ namespace Course
 
             return false;
         }
-
         public static bool CheckDate(string str)
         {
             for (int i = 0; i < str.Length; i++)
@@ -93,7 +91,6 @@ namespace Course
 
             return false;
         }
-
         public static bool CheckContractNumber(string str)
         {
             for (int i = 0; i < str.Length; i++)
@@ -111,7 +108,6 @@ namespace Course
 
             return false;
         }
-
         public static bool CheckInsuranceType(string str)
         {
             int i = 0;

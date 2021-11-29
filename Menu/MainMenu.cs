@@ -60,6 +60,59 @@ namespace Course
             Console.ForegroundColor = ConsoleColor.Blue;
             Console.WriteLine("[Закрыть меню]");
             Console.ResetColor();
+        }
+        static public void GeneralLocked()
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("[Меню]");
+            Console.ResetColor();
+
+            Console.Write(" Введите");
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.Write(" [1]");
+            Console.ResetColor();
+            Console.Write(", чтобы ");
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine("[Считать данные]");
+            Console.ResetColor();
+
+            Console.Write(" Введите");
+            Console.ForegroundColor = ConsoleColor.DarkGray;
+            Console.Write(" [2]");
+            Console.ResetColor();
+            Console.Write(", чтобы ");
+            Console.ForegroundColor = ConsoleColor.DarkGray;
+            Console.WriteLine(" [Записать новые данные]");
+            Console.ResetColor();
+
+            Console.Write(" Введите");
+            Console.ForegroundColor = ConsoleColor.DarkGray;
+            Console.Write(" [3]");
+            Console.ResetColor();
+            Console.Write(", чтобы рассчитать");
+            Console.ForegroundColor = ConsoleColor.DarkGray;
+            Console.Write("[Заработную плату]");
+            Console.ResetColor();
+            Console.WriteLine(" сотрудникам");
+
+            Console.Write(" Введите");
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.Write(" [9]");
+            Console.ResetColor();
+            Console.Write(", для информации об");
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.Write(" [Авторе]");
+            Console.ResetColor();
+            Console.WriteLine();
+
+            Console.Write(" Введите");
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.Write(" [0]");
+            Console.ResetColor();
+            Console.Write(", чтобы ");
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine("[Закрыть меню]");
+            Console.ResetColor();
 
         }
         public static void Data()
@@ -108,7 +161,6 @@ namespace Course
             Console.ResetColor();
 
         }
-
         public static void ReadFile()
         {
             Console.ForegroundColor = ConsoleColor.Red;
@@ -154,7 +206,6 @@ namespace Course
             Console.WriteLine("вернуться");
             Console.ResetColor();
         }
-
         static public void CompanyMessage()
         {
             Console.WriteLine(new string('-', 28));
@@ -177,7 +228,6 @@ namespace Course
             Console.ForegroundColor = ConsoleColor.Blue;
             Console.WriteLine("[Программа завершила свою работу]");
         }
-
         static public void AuthorInfo()
         {
             Console.ForegroundColor = ConsoleColor.Yellow;
@@ -199,11 +249,16 @@ namespace Course
             Console.ResetColor();
 
         }
-
         static public void SalaryInfo()
         {
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("[Рассчет заработной платы]\n");
+            Console.ResetColor();
+        }
+        static public void IsntUnlocked()
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("Ошибка: не все данные были считаны");
             Console.ResetColor();
         }
     }

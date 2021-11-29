@@ -6,15 +6,20 @@ using System.Threading.Tasks;
 
 namespace Course
 {
-    class Ancestor
+    class Branch // Класс филиал
     {
-        protected string name; //Наименование
+        public string name;
+        protected int code; // Код филиала
+        protected string adress;
+        protected string phoneNumber;
 
-        public Ancestor(string name)
+        public Branch(string name, int code, string adress, string phoneNumber)
         {
             this.name = name;
+            this.code = code;
+            this.adress = adress;
+            this.phoneNumber = phoneNumber;
         }
-
         public string Name
         {
             get
@@ -22,22 +27,6 @@ namespace Course
                 return name;
             }
         }
-    }
-
-    class Branch:Ancestor // Класс филиал
-    {
-        protected int code; // Код филиала
-        // Наименование филиала наследуется
-        protected string adress;
-        protected string phoneNumber;
-
-        public Branch(string name, int code, string adress, string phoneNumber) : base (name)
-        {
-            this.code = code;
-            this.adress = adress;
-            this.phoneNumber = phoneNumber;
-        }
-
         public int Code
         {
             get
@@ -45,7 +34,6 @@ namespace Course
                 return code;
             }
         }
-
         public string Adress
         {
             get
@@ -53,7 +41,6 @@ namespace Course
                 return adress;
             }
         }
-
         public string PhoneNumber
         {
             get
@@ -62,7 +49,6 @@ namespace Course
             }
         }
     }
-
     class Agents : Branch // Класс агенты
     {
         //Имя от родителя
@@ -81,23 +67,31 @@ namespace Course
             get { return birthday; }
         }
     }
-
-    class InsuranceType : Ancestor // Вид страхования
+    class InsuranceType // Вид страхования
     {
         protected string type; // Тип страхования
-        // Наименование филиала наследуется
+        public string name;
 
-        public InsuranceType(string name, string type) : base(name)
+        public string Name
+        {
+            get
+            {
+                return name;
+            }
+        }
+        public InsuranceType(string name, string type)
         {
             this.type = type;
+            this.name = name;
         }
-
         public string Type
         {
-            get { return type; }
+            get
+            {
+                return type;
+            }
         }
     }
-
     class Contract : InsuranceType // Контракт
     {
         string numberOfContract; //Номер договора
@@ -105,8 +99,6 @@ namespace Course
         int summ; // Страховая сумма
         double tariffRate; // Тарифная ставка
         int branch; // Филиал
-        //Вид страхования наследуется
-        //Имя клиента наследуется
 
         public Contract(string name, string type, string numberOfContract, string date, int summ, double tariffRate, int branch) : base(name,type)
         {
@@ -116,7 +108,6 @@ namespace Course
             this.tariffRate = tariffRate;
             this.branch = branch;
         }
-
         public string NumberOfContract
         {
             get
@@ -124,7 +115,6 @@ namespace Course
                 return numberOfContract;
             }
         }
-
         public string Date
         {
             get
@@ -132,7 +122,6 @@ namespace Course
                 return date;
             }
         }
-
         public int Summ
         {
             get
@@ -140,7 +129,6 @@ namespace Course
                 return summ;
             }
         }
-
         public double TariffRate
         {
             get
@@ -155,15 +143,16 @@ namespace Course
                 return branch;
             }
         }
-
     }
-    
-    class Salary:Ancestor
+    class Salary
     {
         double insuranceFee;
-        public Salary(string name, double insuranceFee):base(name)
+        string name;
+
+        public Salary(string name, double insuranceFee)
         {
             this.insuranceFee = insuranceFee;
+            this.name = name;
         }
 
         public double InsuranceFee
@@ -177,6 +166,12 @@ namespace Course
                 insuranceFee = value;
             }
         }
-
+        public string Name
+        {
+            get
+            {
+                return name;
+            }
+        }
     }
 }
