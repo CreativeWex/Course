@@ -31,6 +31,10 @@ namespace Course
             Console.WriteLine();
             MainMenu.General();
         }
+        static void Summary()
+        {
+
+        }
     }
 }
  
