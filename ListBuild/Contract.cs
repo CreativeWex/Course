@@ -11,7 +11,7 @@ namespace Course
     class BuildContractList
     {
         List<Contract> BuildedContract = new List<Contract>();
-        int listSize;
+        public int listSize;
         string filename = "SourceContract.txt";
 
         public BuildContractList(ref int errorFlag)
@@ -32,7 +32,7 @@ namespace Course
                 numberOfContract = input.ReadLine();
                 if (CatchErrors.CheckContractNumber(numberOfContract))
                 {
-                    Messages.ErrorContractNumber();
+                    MessageErrors.ErrorContractNumber();
                     errorFlag = 1;
                     break;
                 }
@@ -40,7 +40,7 @@ namespace Course
                 date = input.ReadLine();
                 if (CatchErrors.CheckDate(date))
                 {
-                    Messages.ErrorDate();
+                    MessageErrors.ErrorDate();
                     errorFlag = 1;
                     break;
                 }
@@ -48,13 +48,13 @@ namespace Course
 
                 if (!Int32.TryParse(input.ReadLine(), out summ))
                 {
-                    Messages.ErrorSumm();
+                    MessageErrors.ErrorSumm();
                     errorFlag = 1;
                     break;
                 }
                 if (CatchErrors.IsNegative(summ))
                 {
-                    Messages.ErrorSumm();
+                    MessageErrors.ErrorSumm();
                     errorFlag = 1;
                     break;
                 }
@@ -62,26 +62,26 @@ namespace Course
 
                 if (!Double.TryParse(input.ReadLine(), out tariffRate))
                 {
-                    Messages.ErrorTariffRate();
+                    MessageErrors.ErrorTariffRate();
                     errorFlag = 1;
                     break;
                 }
                 if (CatchErrors.IsNegative(tariffRate) || tariffRate > 100)
                 {
-                    Messages.ErrorTariffRate();
+                    MessageErrors.ErrorTariffRate();
                     errorFlag = 1;
                     break;
                 }
 
                 if (!Int32.TryParse(input.ReadLine(), out branch))
                 {
-                    Messages.ErrorBranchName();
+                    MessageErrors.ErrorBranchName();
                     errorFlag = 1;
                     break;
                 }
                 if (CatchErrors.IsNegative(branch))
                 {
-                    Messages.ErrorBranchName();
+                    MessageErrors.ErrorBranchName();
                     errorFlag = 1;
                     break;
                 }
@@ -89,7 +89,7 @@ namespace Course
                 insuranceType = input.ReadLine();
                 if (CatchErrors.CheckInsuranceType(insuranceType))
                 {
-                    Messages.ErrorInsuranceType();
+                    MessageErrors.ErrorInsuranceType();
                     errorFlag = 1;
                     break;
                 }
@@ -97,7 +97,7 @@ namespace Course
                 name = input.ReadLine();
                 if (CatchErrors.CheckName(name))
                 {
-                    Messages.ErrorString();
+                    MessageErrors.ErrorString();
                     errorFlag = 1;
                     break;
                 }
@@ -121,6 +121,14 @@ namespace Course
 
             table.Write(Format.Default);
             Console.WriteLine();
+        }
+
+        public List<Contract> _BuildedContract
+        {
+            get
+            {
+                return BuildedContract;
+            }
         }
 
     }// Конец класса

@@ -157,4 +157,26 @@ namespace Course
         }
 
     }
+    
+    class Salary:Ancestor
+    {
+        double insuranceFee;
+        public Salary(string name, double insuranceFee):base(name)
+        {
+            this.insuranceFee = insuranceFee;
+        }
+
+        public double InsuranceFee
+        {
+            get
+            {
+                return insuranceFee;
+            }
+            set
+            {
+                insuranceFee = value;
+            }
+        }
+
+    }
 }

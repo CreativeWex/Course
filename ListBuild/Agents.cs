@@ -8,18 +8,19 @@ using ConsoleTables;
 
 namespace Course
 {
-    class BuildBranchList
+    class BuildAgentsList
     {
-        List<Branch> BuildedBranch = new List<Branch>();
+        public List<Agents> BuildedAgends = new List<Agents>();
         int listSize;
-        string filename = "SourceBranch.txt";
+        string filename = "SourceAgents.txt";
 
-        public BuildBranchList(ref int errorFlag)
+        public BuildAgentsList(ref int errorFlag)
         {
-            string name = "";
-            int code = 0; ;
-            string adress = "";
-            string phoneNumber = "";
+            string name;
+            int code;
+            string adress;
+            string phoneNumber;
+            string birthday;
 
             CatchErrors.CheckFile(filename);
             StreamReader input = new StreamReader(filename);
@@ -29,20 +30,20 @@ namespace Course
                 name = input.ReadLine();
                 if (CatchErrors.CheckName(name))
                 {
-                    Messages.ErrorString();
+                    MessageErrors.ErrorString();
                     errorFlag = 1;
                     break;
                 }
 
                 if (!Int32.TryParse(input.ReadLine(), out code))
                 {
-                    Messages.ErrorBranchName();
+                    MessageErrors.ErrorBranchName();
                     errorFlag = 1;
                     break;
                 }
                 if (CatchErrors.IsNegative(code))
                 {
-                    Messages.ErrorBranchName();
+                    MessageErrors.ErrorBranchName();
                     errorFlag = 1;
                     break;
                 }
@@ -52,37 +53,37 @@ namespace Course
                 phoneNumber = input.ReadLine();
                 if (CatchErrors.CheckPhoneNumber(phoneNumber))
                 {
-                    Messages.ErrorPhoneNumber();
+                    MessageErrors.ErrorPhoneNumber();
                     errorFlag = 1;
                     break;
                 }
 
-                BuildedBranch.Add(new Branch(name, code, adress, phoneNumber));
+                birthday = input.ReadLine();
+                if (CatchErrors.CheckDate(birthday))
+                {
+                    MessageErrors.ErrorDate();
+                    errorFlag = 1;
+                    break;
+                }
+
+                BuildedAgends.Add(new Agents(name, code, adress, phoneNumber, birthday));
             }
+
             input.Close();
-            listSize = BuildedBranch.Count;
+            listSize = BuildedAgends.Count;
         }
 
-        public List<Branch> Branch
+        public void DisplayAgentsInfo()
         {
-            get
-            {
-                return BuildedBranch;
-            }
-        }
-
-        public void DisplayBranchInfo()
-        {
-            var table = new ConsoleTable("Филиал", "Код филиала", "Адрес", "Телефон");
+            var table = new ConsoleTable("Имя", "Номер телефона", "Адрес", "Код филиала", "Дата рождения");
 
             for (int i = 0; i < listSize; i++)
             {
-                table.AddRow(BuildedBranch[i].Name, BuildedBranch[i].Code, BuildedBranch[i].Adress, BuildedBranch[i].PhoneNumber);
+                table.AddRow(BuildedAgends[i].Name, BuildedAgends[i].PhoneNumber, BuildedAgends[i].Adress, BuildedAgends[i].Code, BuildedAgends[i].Birthday);
             }
 
             table.Write(Format.Default);
             Console.WriteLine();
         }
-
-    }
+    }//Конец класса
 }

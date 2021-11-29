@@ -8,13 +8,94 @@ namespace Course
 {
     class Program
     {
+        public static void Data(int errorFlag)
+        {
+            Console.Clear();
+            MainMenu.Data();
+            int submenu = 10;
+
+            while (submenu != 0)
+            {
+                Console.Write("> ");
+                try
+                {
+                    submenu = Convert.ToInt32(Console.ReadLine());
+                }
+                catch (Exception e)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Ошибка: " + e.Message);
+                    Console.ResetColor();
+                }
+
+                if (submenu == 0)
+                {
+                    Console.Clear();
+                    MainMenu.General();
+                    break;
+                }
+
+                else if (submenu == 1)
+                {
+                    Console.Clear();
+                    DataMenu.ChosenContractMessage();
+
+                    BuildContractList objectContract = new BuildContractList(ref errorFlag);
+
+                    if (errorFlag == 1)
+                        break;
+                    objectContract.DisplayContractInfo();
+                    MainMenu.Data();
+
+                }
+
+                else if (submenu == 2)
+                {
+                    Console.Clear();
+                    DataMenu.ChosenBranchMessage();
+
+                    BuildBranchList objectBranch = new BuildBranchList(ref errorFlag);
+
+                    if (errorFlag == 1)
+                        break;
+
+                    objectBranch.DisplayBranchInfo();
+                    MainMenu.Data();
+
+                }
+
+                else if (submenu == 3)
+                {
+                    Console.Clear();
+                    DataMenu.ChosenAgentsMessage();
+
+                    BuildAgentsList objectAgents = new BuildAgentsList(ref errorFlag);
+
+                    if (errorFlag == 1)
+                        break;
+
+                    objectAgents.DisplayAgentsInfo();
+                    MainMenu.Data();
+                }
+            }
+        }
+
+        public static void Salary(int errorFlag)
+        {
+            Console.Clear();
+            MainMenu.SalaryInfo();
+
+            BuildContractList source = new BuildContractList(ref errorFlag);
+            BuildSalary ob = new BuildSalary();
+        }
+
         static void Main(string[] args)
         {
             int menu = 10;
             int errorFlag = 0;
 
-            Messages.CompanyMessage();
-            Messages.MenuMessage();
+            MainMenu.CompanyMessage();
+            MainMenu.General();
 
             while (menu != 0)
             {
@@ -23,82 +104,35 @@ namespace Course
                 {
                     menu = Convert.ToInt32(Console.ReadLine());
                 }
-                catch(Exception e)
+                catch (Exception e)
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("Ошибка: " + e.Message);
                     Console.ResetColor();
-                    break;
-
                 }
-
 
                 if (menu == 1)
                 {
-                    Console.Clear();
-                    Messages.ChosenContractMessage();
-
-                    BuildContractList objectContract = new BuildContractList(ref errorFlag);
-
-                    if (errorFlag == 1)
-                        break;
-
-                    objectContract.DisplayContractInfo();
-                    Messages.MenuMessage();
-
+                    Data(errorFlag);
                 }
 
-                else if (menu == 2)
+                if (menu == 3)
+                {
+;                    Salary(errorFlag);
+                }
+
+                else if (menu == 9)  // АВТОР
                 {
                     Console.Clear();
-                    Messages.ChosenBranchMessage();
+                    MainMenu.AuthorInfo();
+                    MainMenu.General();
 
-                    BuildBranchList objectBranch = new BuildBranchList(ref errorFlag);
+                } //АВТОР
 
-                    if (errorFlag == 1)
-                        break;
-
-                    objectBranch.DisplayBranchInfo();
-                    Messages.MenuMessage();
-
-                }
-
-                else if (menu == 3)
-                {
-                    Console.Clear();
-                    Messages.ChosenAgentsMessage();
-
-                    BuildAgentsList objectAgents = new BuildAgentsList(ref errorFlag);
-
-                    if (errorFlag == 1)
-                        break;
-
-                    objectAgents.DisplayAgentsInfo();
-                    Messages.MenuMessage();
-
-                }
-
-                else if (menu == 8)
-                {
-                    Console.Clear();
-                    BuildBranchList objectBranch = new BuildBranchList(ref errorFlag);
-                    objectBranch.DisplayBranchInfo();
-                    Console.WriteLine("Сортировка");
-                    Sorts.Sort(objectBranch.Branch, 0);
-                    objectBranch.DisplayBranchInfo();
-
-                }
-
-                else if (menu == 9)
-                {
-                    Console.Clear();
-                    Messages.AuthorInfo();
-                    Messages.MenuMessage();
-
-                }
             }
-            Messages.EndOfProgramm();
+            MainMenu.EndOfProgramm();
             Console.ReadKey();
         }
     }
+
 }
