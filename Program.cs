@@ -8,131 +8,99 @@ namespace Course
 {
     class Program
     {
-        public static void Data(int errorFlag)
+        public static void TryCatch(ref int menu)
         {
-            Console.Clear();
-            MainMenu.Data();
+            Console.Write("> ");
+            try
+            {
+                menu = Convert.ToInt32(Console.ReadLine());
+            }
+            catch (Exception e)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Ошибка: " + e.Message);
+                Console.ResetColor();
+            }
+        } 
+        public static void Data()
+        {
             int submenu = 10;
 
+            Console.Clear();
+            MainMenu.Data();
             while (submenu != 0)
             {
-                Console.Write("> ");
-                try
-                {
-                    submenu = Convert.ToInt32(Console.ReadLine());
-                }
-                catch (Exception e)
-                {
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("Ошибка: " + e.Message);
-                    Console.ResetColor();
-                }
+                TryCatch(ref submenu);
 
                 if (submenu == 0)
                 {
-                    Console.Clear();
-                    MainMenu.General();
+                    DataMenu.Exit();
                     break;
                 }
 
                 else if (submenu == 1)
                 {
-                    Console.Clear();
-                    DataMenu.ChosenContractMessage();
-
-                    BuildContractList objectContract = new BuildContractList(ref errorFlag);
-
-                    if (errorFlag == 1)
+                    if (DataMenu.Contract())
                         break;
-                    objectContract.DisplayContractInfo();
-                    MainMenu.Data();
-
                 }
 
                 else if (submenu == 2)
                 {
-                    Console.Clear();
-                    DataMenu.ChosenBranchMessage();
-
-                    BuildBranchList objectBranch = new BuildBranchList(ref errorFlag);
-
-                    if (errorFlag == 1)
+                    if (DataMenu.Branch())
                         break;
-
-                    objectBranch.DisplayBranchInfo();
-                    MainMenu.Data();
-
                 }
 
                 else if (submenu == 3)
                 {
-                    Console.Clear();
-                    DataMenu.ChosenAgentsMessage();
-
-                    BuildAgentsList objectAgents = new BuildAgentsList(ref errorFlag);
-
-                    if (errorFlag == 1)
+                    if (DataMenu.Agents())
                         break;
-
-                    objectAgents.DisplayAgentsInfo();
-                    MainMenu.Data();
                 }
             }
         }
-
-        public static void Salary(int errorFlag)
+        public static void Salary()
         {
+            int errorFlag = 0;
+
             Console.Clear();
             MainMenu.SalaryInfo();
-
             BuildContractList source = new BuildContractList(ref errorFlag);
             BuildSalary ob = new BuildSalary();
         }
-
+        public static void Author()
+        {
+            Console.Clear();
+            MainMenu.AuthorInfo();
+            MainMenu.General();
+        }
         static void Main(string[] args)
         {
             int menu = 10;
-            int errorFlag = 0;
 
             MainMenu.CompanyMessage();
             MainMenu.General();
 
             while (menu != 0)
             {
-                Console.Write("> ");
-                try
-                {
-                    menu = Convert.ToInt32(Console.ReadLine());
-                }
-                catch (Exception e)
-                {
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("Ошибка: " + e.Message);
-                    Console.ResetColor();
-                }
+                TryCatch(ref menu);
 
                 if (menu == 1)
                 {
-                    Data(errorFlag);
+                    Data();
                 }
 
                 if (menu == 3)
                 {
-;                    Salary(errorFlag);
+                    Salary();
                 }
 
-                else if (menu == 9)  // АВТОР
+                else if (menu == 9)
                 {
-                    Console.Clear();
-                    MainMenu.AuthorInfo();
-                    MainMenu.General();
-
-                } //АВТОР
-
+                    Author();
+                }
             }
+
             MainMenu.EndOfProgramm();
             Console.ReadKey();
         }
     }
-
 }
