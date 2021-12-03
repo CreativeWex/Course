@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Course.Branch">
+    <Position X="13.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAgQAQAIEgEAAAIAAAAAAAAAAA=</HashCode>
+      <FileName>InheritClasses.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Course.Agents">
+    <Position X="13.5" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAgAAAAIAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>InheritClasses.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Course.InsuranceType">
+    <Position X="8.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAFAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>InheritClasses.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Course.Contract">
+    <Position X="10.75" Y="0.75" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAgACAAAAAAAAAABAAAAAAACAAAAAgJBAAAAQAAIAA=</HashCode>
+      <FileName>InheritClasses.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Course.Salary" Collapsed="true">
+    <Position X="18" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAEABAAAAAQAAAAAAA=</HashCode>
+      <FileName>InheritClasses.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Course.BuildContractList">
+    <Position X="11" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAABAAAAAAAAgBAAAAAEACAAFAAAIAAAAAQAAIAE=</HashCode>
+      <FileName>ListBuild\BuildContractList.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Course.InsuranceTypeList" Collapsed="true">
+    <Position X="8.5" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAABAAAAAAAAAAgAAAQAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ListBuild\BuildInsuranceTypeList.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Course.BuildBranchList" Collapsed="true">
+    <Position X="15.5" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAABAAAAAAAAAAAAAAAAAIEAEABAIgAAQAAAAAAA=</HashCode>
+      <FileName>ListBuild\BuildBranchList.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Course.BuildAgentsList">
+    <Position X="18" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABABAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ListBuild\BuildAgentsList.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

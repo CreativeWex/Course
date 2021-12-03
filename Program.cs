@@ -8,10 +8,6 @@ namespace Course
 {
     class Program
     {
-        static bool unlockContract = false;
-        static bool unlockBranch = false;
-        static bool unlockAgents = false;
-
         public static void TryCatch(ref int menu)
         {
             Console.Write("> ");
@@ -26,7 +22,7 @@ namespace Course
                 Console.ResetColor();
             }
         } 
-        public static void Data(ref bool unlocked)
+        public static void Data()
         {
             int submenu = 10;
 
@@ -38,58 +34,90 @@ namespace Course
 
                 if (submenu == 0)
                 {
-                    DataMenu.Exit(unlockContract, unlockBranch, unlockAgents);
-                    if (unlockContract == true && unlockBranch == true && unlockAgents == true)
-                    {
-                        unlocked = true;
-                    }
+                    Console.Clear();
+                    MainMenu.CompanyMessage();
+                    MainMenu.General();
                     break;
                 }
-
                 else if (submenu == 1)
                 {
-                    unlockContract = true;
-                    if (DataMenu.Contract())
-                        break;
+                    Console.Clear();
+                    DataMenu.ChosenContractMessage();
+                    BuildContractList objectContract = new BuildContractList();
+                    objectContract.Display();
+                    ContractActions.ContractMaster(objectContract);
                 }
-
                 else if (submenu == 2)
                 {
-                    unlockBranch = true;
-                    if (DataMenu.Branch())
-                        break;
+                    Console.Clear();
+                    DataMenu.ChosenBranchMessage();
+                    BuildBranchList objectBranch = new BuildBranchList();
+                    objectBranch.DisplayBranchInfo();
+                    MainMenu.Data();
                 }
-
                 else if (submenu == 3)
                 {
-                    unlockAgents = true;
-                    if (DataMenu.Agents())
-                        break;
+                    Console.Clear();
+                    DataMenu.ChosenBranchMessage();
+                    BuildAgentsList objectAgents = new BuildAgentsList();
+                    objectAgents.DisplayAgentsInfo();
+                    MainMenu.Data();
+                }
+                else if (submenu == 4)
+                {
+                    Console.Clear();
+                    DataMenu.ChosenInsuranceType();
+                    BuildInsuranceTypeList objectType = new BuildInsuranceTypeList();
+                    objectType.Display();
+                    MainMenu.Data();
+                }
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Ошибка: неверный пункт меню");
+                    Console.ResetColor();
                 }
             }
         }
-        public static void Salary()
-        {
-            int errorFlag = 0;
+        //public static void Salary()
+        //{
+        //    int errorFlag = 0;
 
-            Console.Clear();
-            MainMenu.SalaryInfo();
-            BuildContractList source = new BuildContractList(ref errorFlag);
-            BuildSalary ob = new BuildSalary();
-        }
+        //    Console.Clear();
+        //    MainMenu.SalaryInfo();
+        //    BuildContractList source = new BuildContractList(ref errorFlag);
+        //    BuildSalary ob = new BuildSalary();
+        //}
         public static void Author()
         {
             Console.Clear();
             MainMenu.AuthorInfo();
-            MainMenu.General();
+            MainMenu.AuthorMenu();
+            int submenu = 10;
+            while (submenu != 0)
+            {
+                TryCatch(ref submenu);
+                if (submenu == 0)
+                {
+                    Console.Clear();
+                    MainMenu.CompanyMessage();
+                    MainMenu.General();
+                    break;
+                }
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Ошибка: неверный пункт меню");
+                    Console.ResetColor();
+                }
+            }
         }
-        static void Main(string[] args)
+        static void Main()
         {
             int menu = 10;
-            bool unlocked = false;
 
             MainMenu.CompanyMessage();
-            MainMenu.GeneralLocked();
+            MainMenu.General();
 
             while (menu != 0)
             {
@@ -97,22 +125,19 @@ namespace Course
 
                 if (menu == 1)
                 {
-                    Data(ref unlocked);
+                    Data();
                 }
 
-                else if (menu == 3 && unlocked == false)
-                {
-                    MainMenu.IsntUnlocked();
-                }
-
-                else if (menu == 3)
-                {
-                    Salary();
-                }
-
-                else if (menu == 9)
+                if (menu == 2)
                 {
                     Author();
+                }
+
+                if (menu != 1 && menu != 2 && menu != 0)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Ошибка: неверный пункт меню");
+                    Console.ResetColor();
                 }
             }
 

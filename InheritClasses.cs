@@ -70,15 +70,7 @@ namespace Course
     class InsuranceType // Вид страхования
     {
         protected string type; // Тип страхования
-        public string name;
-
-        public string Name
-        {
-            get
-            {
-                return name;
-            }
-        }
+        protected string name;
         public InsuranceType(string name, string type)
         {
             this.type = type;
@@ -86,19 +78,20 @@ namespace Course
         }
         public string Type
         {
-            get
-            {
-                return type;
-            }
+            get { return type; }
+        }
+        public string Name
+        {
+            get { return name; }
         }
     }
     class Contract : InsuranceType // Контракт
     {
-        string numberOfContract; //Номер договора
-        string date; // Дата заключения
-        int summ; // Страховая сумма
-        double tariffRate; // Тарифная ставка
-        int branch; // Филиал
+        protected string numberOfContract; //Номер договора
+        protected string date; // Дата заключения
+        protected int summ; // Страховая сумма
+        protected double tariffRate; // Тарифная ставка
+        protected int branch; // Филиал
 
         public Contract(string name, string type, string numberOfContract, string date, int summ, double tariffRate, int branch) : base(name,type)
         {

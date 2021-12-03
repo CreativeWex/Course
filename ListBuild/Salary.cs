@@ -8,33 +8,49 @@ using ConsoleTables;
 namespace Course
 {
     class BuildSalary
-    { 
-        
-        public BuildSalary()
-        {
-            int errorFlag = 0;
-            BuildContractList ob = new BuildContractList(ref errorFlag);
-            int size = ob._BuildedContract.Count;
+    {
+        //static int size;
+        //public BuildSalary()
+        //{
+        //    int errorFlag = 0;
+        //    BuildContractList ob = new BuildContractList(ref errorFlag);
+        //    size = ob.BuildedContract.Count;
 
-            List <Salary> AgentSalary = new List <Salary>();
-            double[] fee = new double[size];
+        //    List<Salary> AgentSalary = new List<Salary>();
+        //    double[] fee = new double[size];
 
-            var table = new ConsoleTable("Сотрудник","Стоимость контракта, руб.", "Номер контракта");
+        //    var table = new ConsoleTable("Сотрудник", "Стоимость контракта, руб.", "Номер контракта");
 
-            for (int i = 0; i < size; i++)
-            {
-                fee[i] = ob._BuildedContract[i].Summ * ob._BuildedContract[i].TariffRate;
-                table.AddRow(ob._BuildedContract[i].Name, fee[i], ob._BuildedContract[i].NumberOfContract);
-            }
+        //    for (int i = 0; i < size; i++)
+        //    {
+        //        fee[i] = ob.BuildedContract[i].Summ * ob.BuildedContract[i].TariffRate;
+        //        AgentSalary.Add(new Salary(ob.BuildedContract[i].Name, fee[i]));
+        //        table.AddRow(ob.BuildedContract[i].Name, fee[i], ob.BuildedContract[i].NumberOfContract);
+        //    }
 
-            table.Write();
-            Console.WriteLine();
-            MainMenu.General();
-        }
-        static void Summary()
-        {
+        //    table.Write();
+        //    Console.WriteLine();
+        //    //Summary(AgentSalary);
+        //    MainMenu.General();
+        //}
+        //static void Summary(List<Salary> AgentSalary)
+        //{
+        //    var table = new ConsoleTable("Имя сотрудника", "Доход");
+        //    List<Salary> Final = new List<Salary>();
 
-        }
+        //    for (int i = 0; i < size; i++)
+        //    {
+        //        for (int j = 0; j < size - 1; j++)
+        //        {
+        //            if ((AgentSalary[i].Name) == AgentSalary[j].Name && i != j)
+        //            {
+        //                AgentSalary[i].InsuranceFee += AgentSalary[j].InsuranceFee;
+        //            }
+
+        //        }
+        //    }
+        //    table.Write();
+
+        //}
     }
 }
- 

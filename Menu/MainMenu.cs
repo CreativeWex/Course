@@ -18,33 +18,14 @@ namespace Course
             Console.ForegroundColor = ConsoleColor.Blue;
             Console.Write(" [1]");
             Console.ResetColor();
-            Console.Write(", чтобы ");
+            Console.Write(", для ");
             Console.ForegroundColor = ConsoleColor.Blue;
-            Console.WriteLine("[Считать данные]");
+            Console.WriteLine("[Работа с данными]");
             Console.ResetColor();
 
             Console.Write(" Введите");
             Console.ForegroundColor = ConsoleColor.Blue;
             Console.Write(" [2]");
-            Console.ResetColor();
-            Console.Write(", чтобы ");
-            Console.ForegroundColor = ConsoleColor.Blue;
-            Console.WriteLine("[Записать новые данные]");
-            Console.ResetColor();
-
-            Console.Write(" Введите");
-            Console.ForegroundColor = ConsoleColor.Blue;
-            Console.Write(" [3]");
-            Console.ResetColor();
-            Console.Write(", чтобы рассчитать");
-            Console.ForegroundColor = ConsoleColor.Blue;
-            Console.Write("[Заработную плату]");
-            Console.ResetColor();
-            Console.WriteLine(" сотрудникам");
-
-            Console.Write(" Введите");
-            Console.ForegroundColor = ConsoleColor.Blue;
-            Console.Write(" [9]");
             Console.ResetColor();
             Console.Write(", для информации об");
             Console.ForegroundColor = ConsoleColor.Blue;
@@ -58,62 +39,8 @@ namespace Course
             Console.ResetColor();
             Console.Write(", чтобы ");
             Console.ForegroundColor = ConsoleColor.Blue;
-            Console.WriteLine("[Закрыть меню]");
+            Console.WriteLine("[Выйти из программы]");
             Console.ResetColor();
-        }
-        static public void GeneralLocked()
-        {
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("[Меню]");
-            Console.ResetColor();
-
-            Console.Write(" Введите");
-            Console.ForegroundColor = ConsoleColor.Blue;
-            Console.Write(" [1]");
-            Console.ResetColor();
-            Console.Write(", чтобы ");
-            Console.ForegroundColor = ConsoleColor.Blue;
-            Console.WriteLine("[Считать данные]");
-            Console.ResetColor();
-
-            Console.Write(" Введите");
-            Console.ForegroundColor = ConsoleColor.DarkGray;
-            Console.Write(" [2]");
-            Console.ResetColor();
-            Console.Write(", чтобы ");
-            Console.ForegroundColor = ConsoleColor.DarkGray;
-            Console.WriteLine(" [Записать новые данные]");
-            Console.ResetColor();
-
-            Console.Write(" Введите");
-            Console.ForegroundColor = ConsoleColor.DarkGray;
-            Console.Write(" [3]");
-            Console.ResetColor();
-            Console.Write(", чтобы рассчитать");
-            Console.ForegroundColor = ConsoleColor.DarkGray;
-            Console.Write("[Заработную плату]");
-            Console.ResetColor();
-            Console.WriteLine(" сотрудникам");
-
-            Console.Write(" Введите");
-            Console.ForegroundColor = ConsoleColor.Blue;
-            Console.Write(" [9]");
-            Console.ResetColor();
-            Console.Write(", для информации об");
-            Console.ForegroundColor = ConsoleColor.Blue;
-            Console.Write(" [Авторе]");
-            Console.ResetColor();
-            Console.WriteLine();
-
-            Console.Write(" Введите");
-            Console.ForegroundColor = ConsoleColor.Blue;
-            Console.Write(" [0]");
-            Console.ResetColor();
-            Console.Write(", чтобы ");
-            Console.ForegroundColor = ConsoleColor.Blue;
-            Console.WriteLine("[Закрыть меню]");
-            Console.ResetColor();
-
         }
         public static void Data()
         {
@@ -125,9 +52,9 @@ namespace Course
             Console.ForegroundColor = ConsoleColor.Blue;
             Console.Write(" [1]");
             Console.ResetColor();
-            Console.Write(", чтобы просмотреть список доступных ");
+            Console.Write(", для работы со вкладкой ");
             Console.ForegroundColor = ConsoleColor.Blue;
-            Console.Write("договоров");
+            Console.Write("[договоры]");
             Console.ResetColor();
             Console.WriteLine(";");
 
@@ -135,9 +62,9 @@ namespace Course
             Console.ForegroundColor = ConsoleColor.Blue;
             Console.Write(" [2]");
             Console.ResetColor();
-            Console.Write(", чтобы просмотреть список доступных ");
+            Console.Write(", для работы со вкладкой ");
             Console.ForegroundColor = ConsoleColor.Blue;
-            Console.Write("филиалов");
+            Console.Write("[филиалы]");
             Console.ResetColor();
             Console.WriteLine(";");
 
@@ -145,9 +72,19 @@ namespace Course
             Console.ForegroundColor = ConsoleColor.Blue;
             Console.Write(" [3]");
             Console.ResetColor();
-            Console.Write(", чтобы просмотреть список доступных ");
+            Console.Write(", для работы со вкладкой ");
             Console.ForegroundColor = ConsoleColor.Blue;
-            Console.Write("агентов");
+            Console.Write("[агенты]");
+            Console.ResetColor();
+            Console.WriteLine(";");
+
+            Console.Write(" Введите");
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.Write(" [4]");
+            Console.ResetColor();
+            Console.Write(", для работы со вкладкой ");
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.Write("[виды страхования]");
             Console.ResetColor();
             Console.WriteLine(";");
 
@@ -157,68 +94,46 @@ namespace Course
             Console.ResetColor();
             Console.Write(", чтобы ");
             Console.ForegroundColor = ConsoleColor.Blue;
-            Console.WriteLine("вернуться");
+            Console.WriteLine("[вернуться]");
             Console.ResetColor();
 
-        }
-        public static void ReadFile()
-        {
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("[Считывание файла]");
-            Console.ResetColor();
-
-            Console.Write(" Введите");
-            Console.ForegroundColor = ConsoleColor.Blue;
-            Console.Write(" [1]");
-            Console.ResetColor();
-            Console.Write(", считать информацию о ");
-            Console.ForegroundColor = ConsoleColor.Blue;
-            Console.Write("договорах");
-            Console.ResetColor();
-            Console.WriteLine(";");
-
-            Console.Write(" Введите");
-            Console.ForegroundColor = ConsoleColor.Blue;
-            Console.Write(" [2]");
-            Console.ResetColor();
-            Console.Write(", считать информацию о ");
-            Console.ForegroundColor = ConsoleColor.Blue;
-            Console.Write("филиалах");
-            Console.ResetColor();
-            Console.WriteLine(";");
-
-            Console.Write(" Введите");
-            Console.ForegroundColor = ConsoleColor.Blue;
-            Console.Write(" [3]");
-            Console.ResetColor();
-            Console.Write(", считать информацию о ");
-            Console.ForegroundColor = ConsoleColor.Blue;
-            Console.Write("агентах");
-            Console.ResetColor();
-            Console.WriteLine(";");
-
-            Console.Write(" Введите");
-            Console.ForegroundColor = ConsoleColor.Blue;
-            Console.Write(" [0]");
-            Console.ResetColor();
-            Console.Write(", чтобы ");
-            Console.ForegroundColor = ConsoleColor.Blue;
-            Console.WriteLine("вернуться");
-            Console.ResetColor();
         }
         static public void CompanyMessage()
         {
-            Console.WriteLine(new string('-', 28));
+            Console.WriteLine(new string('-', 32));
             Console.ForegroundColor = ConsoleColor.Blue;
-            Console.Write("Страховая компания ");
+            Console.Write("  Страховая компания ");
             Console.ResetColor();
             Console.Write("<<");
             Console.ForegroundColor = ConsoleColor.Red;
             Console.Write("Сокол");
             Console.ResetColor();
             Console.WriteLine(">> ");
-            Console.WriteLine(new string('-', 28));
+            Console.WriteLine(new string('-', 32));
             Console.WriteLine();
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("       .---.        .-----------");
+            Console.WriteLine("      /    \\  __  /    ------");
+            Console.WriteLine("     / /    \\(  )/    -----");
+            Console.WriteLine("    //////   '\\/ `   ---");
+            Console.WriteLine("   //// / // :    : ---");
+            Console.WriteLine("  //         //..\\\\");
+            Console.WriteLine("        ====UU====UU====");
+            Console.WriteLine("            '//||\\\\`");
+            Console.WriteLine("              ''``");
+
+        }
+
+        static public void AuthorMenu()
+        {
+            Console.Write(" Введите");
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.Write(" [0]");
+            Console.ResetColor();
+            Console.Write(", чтобы ");
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine("вернуться");
+            Console.ResetColor();
         }
         static public void EndOfProgramm()
         {
@@ -248,18 +163,6 @@ namespace Course
             Console.WriteLine();
             Console.ResetColor();
 
-        }
-        static public void SalaryInfo()
-        {
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("[Рассчет заработной платы]\n");
-            Console.ResetColor();
-        }
-        static public void IsntUnlocked()
-        {
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("Ошибка: не все данные были считаны");
-            Console.ResetColor();
         }
     }
 }

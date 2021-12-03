@@ -57,10 +57,28 @@ namespace Course
             Console.ResetColor();
         }
 
-        static public void ErrorInsuranceType()
+        static public void BuildListType(string type)
         {
             Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("[!] Ошибка в формате Вида страхования\n");
+            Console.WriteLine($"[!] Ошибка: неверно задан вид страхования: {type}\n");
+            Console.ResetColor();
+        }
+        static public void ContractError()
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine($"[!] Ошибка: неверно заданы параметры договора \n");
+            Console.ResetColor();
+        }
+        static public void ContractError(string str)
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine($"[!] Ошибка: неверно задан параметр {str} \n");
+            Console.ResetColor();
+        }
+        static public void ContractError(int str)
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine($"[!] Ошибка: неверно задан параметр {str} \n");
             Console.ResetColor();
         }
     }

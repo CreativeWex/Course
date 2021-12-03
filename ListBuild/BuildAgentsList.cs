@@ -10,76 +10,74 @@ namespace Course
 {
     class BuildAgentsList
     {
-        public List<Agents> BuildedAgends = new List<Agents>();
-        int listSize;
+        public List<Agents> listAgents = new List<Agents>();
         string filename = "SourceAgents.txt";
 
-        public BuildAgentsList(ref int errorFlag)
+        public BuildAgentsList()
         {
             string name;
             int code;
             string adress;
             string phoneNumber;
             string birthday;
+            bool errors = false;
 
-            CatchErrors.CheckFile(filename);
+            Errors.FileHasErrors(filename, ref errors);
             StreamReader input = new StreamReader(filename);
 
             while (!(input.EndOfStream))
             {
                 name = input.ReadLine();
-                if (CatchErrors.CheckName(name))
+                if (Errors.CheckName(name))
                 {
                     MessageErrors.ErrorString();
-                    errorFlag = 1;
+                    errors = true;
                     break;
                 }
 
                 if (!Int32.TryParse(input.ReadLine(), out code))
                 {
                     MessageErrors.ErrorBranchName();
-                    errorFlag = 1;
+                    errors = true;
                     break;
                 }
-                if (CatchErrors.IsNegative(code))
+                if (Errors.IsNegative(code))
                 {
                     MessageErrors.ErrorBranchName();
-                    errorFlag = 1;
+                    errors = true;
                     break;
                 }
 
                 adress = input.ReadLine();
 
                 phoneNumber = input.ReadLine();
-                if (CatchErrors.CheckPhoneNumber(phoneNumber))
+                if (Errors.CheckPhoneNumber(phoneNumber))
                 {
                     MessageErrors.ErrorPhoneNumber();
-                    errorFlag = 1;
+                    errors = true;
                     break;
                 }
 
                 birthday = input.ReadLine();
-                if (CatchErrors.CheckDate(birthday))
+                if (!Errors.Date(birthday))
                 {
                     MessageErrors.ErrorDate();
-                    errorFlag = 1;
+                    errors = true;
                     break;
                 }
 
-                BuildedAgends.Add(new Agents(name, code, adress, phoneNumber, birthday));
+                listAgents.Add(new Agents(name, code, adress, phoneNumber, birthday));
             }
-
             input.Close();
-            listSize = BuildedAgends.Count;
         }
 
         public void DisplayAgentsInfo()
         {
             var table = new ConsoleTable("Имя", "Номер телефона", "Адрес", "Код филиала", "Дата рождения");
 
-            for (int i = 0; i < listSize; i++)
+            for (int i = 0; i < listAgents.Count; i++)
             {
-                table.AddRow(BuildedAgends[i].Name, BuildedAgends[i].PhoneNumber, BuildedAgends[i].Adress, BuildedAgends[i].Code, BuildedAgends[i].Birthday);
+                table.AddRow(listAgents[i].Name, listAgents[i].PhoneNumber, listAgents[i].Adress, listAgents[i].Code, listAgents[i].Birthday);
             }
 
             table.Write(Format.Default);
