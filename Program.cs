@@ -45,7 +45,8 @@ namespace Course
                     DataMenu.ChosenContractMessage();
                     BuildContractList objectContract = new BuildContractList();
                     objectContract.Display();
-                    ContractActions.ContractMaster(objectContract);
+                    ContractActions ob = new ContractActions();
+                    ob.ContractMaster(objectContract);
                 }
                 else if (submenu == 2)
                 {
@@ -53,7 +54,8 @@ namespace Course
                     DataMenu.ChosenBranchMessage();
                     BuildBranchList objectBranch = new BuildBranchList();
                     objectBranch.Display();
-                    BranchActions.BranchMaster(objectBranch);
+                    BranchActions ob = new BranchActions();
+                    ob.BranchMaster(objectBranch);
                 }
                 else if (submenu == 3)
                 {
@@ -61,7 +63,8 @@ namespace Course
                     DataMenu.ChosenAgentsMessage();
                     BuildAgentsList objectAgents = new BuildAgentsList();
                     objectAgents.DisplayAgentsInfo();
-                    AgentsActions.AgentsMaster(objectAgents);
+                    AgentsActions ob = new AgentsActions();
+                    ob.AgentsMaster(objectAgents);
                 }
                 else if (submenu == 4)
                 {
@@ -69,7 +72,8 @@ namespace Course
                     DataMenu.ChosenInsuranceType();
                     BuildInsuranceTypeList objectType = new BuildInsuranceTypeList();
                     objectType.Display();
-                    TypeActions.TypeMaster(objectType);
+                    TypeActions ob = new TypeActions();
+                    ob.TypeMaster(objectType);
                 }
                 else
                 {

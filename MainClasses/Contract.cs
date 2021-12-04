@@ -57,16 +57,6 @@ namespace Course
             }
             input.Close();
         } // конец конструктора
-        public void Display()
-        {
-            var table = new ConsoleTable("Номер договора", "Дата заключения", "Страховая сумма", "Тарифная ставка", "Код филиала", "Вид страхования", "Имя Агента");
-            for (int i = 0; i < list_Contract.Count; i++)
-            {
-                table.AddRow(list_Contract[i].NumberOfContract, list_Contract[i].Date, list_Contract[i].Summ, list_Contract[i].TariffRate, list_Contract[i].Branch, list_Contract[i].Type, list_Contract[i].Name);
-            }
-            table.Write(Format.Default);
-            Console.WriteLine();
-        }
         public string NumberOfContract
         {
             get { return numberOfContract; }
@@ -98,6 +88,16 @@ namespace Course
         public List<Contract> List_Contract
         {
             get { return list_Contract; }
+        }
+        public void Display()
+        {
+            var table = new ConsoleTable("Номер договора", "Дата заключения", "Страховая сумма", "Тарифная ставка", "Код филиала", "Вид страхования", "Имя Агента");
+            for (int i = 0; i < list_Contract.Count; i++)
+            {
+                table.AddRow(list_Contract[i].NumberOfContract, list_Contract[i].Date, list_Contract[i].Summ, list_Contract[i].TariffRate, list_Contract[i].Branch, list_Contract[i].Type, list_Contract[i].Name);
+            }
+            table.Write(Format.Default);
+            Console.WriteLine();
         }
         public void Add()
         {
@@ -131,7 +131,6 @@ namespace Course
 
             list_Contract.Add(new Contract(name, type, numberOfContract, date, summ, tariffRate, branch));
         }
-
         public void Remove()
         {
             Console.ForegroundColor = ConsoleColor.Blue;
@@ -157,7 +156,8 @@ namespace Course
         }
         public void Sort()
         {
-            ContractActions.SortMessages();
+            ContractActions sorting = new ContractActions();
+            sorting.SortMessages();
             Console.Write("> ");
             string param = Console.ReadLine();
             Console.Clear();

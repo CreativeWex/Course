@@ -8,20 +8,22 @@ using ConsoleTables;
 
 namespace Course
 {
-    class BuildBranchList
+    class BuildAgentsList
     {
-        public List<Branch> list_Branch = new List<Branch>();
+        public List<Agents> listAgents = new List<Agents>();
         string filename;
         string name;
         int code;
         string adress;
         string phoneNumber;
+        string birthday;
 
-        public BuildBranchList()
+        public BuildAgentsList()
         {
+            
             bool errors = false;
             string readedCode;
-            Console.WriteLine("Файл для считывания (по умолчанию SourceBranch.txt):");
+            Console.WriteLine("Файл для считывания (по умолчанию SourceAgents.txt):");
             Console.Write("> ");
             filename = Console.ReadLine();
             if (Errors.FileHasErrors(filename, ref errors))
@@ -34,18 +36,18 @@ namespace Course
                 readedCode = input.ReadLine();
                 adress = input.ReadLine();
                 phoneNumber = input.ReadLine();
+                birthday = input.ReadLine();
 
-                if (Errors.BranchHasErrors(name, readedCode, adress, phoneNumber) == true || errors)
+                if (Errors.BuildHasErrors(name, readedCode, adress, phoneNumber, birthday) == true || errors)
                 {
-                    MessageErrors.BranchError();
+                    MessageErrors.AgentsError();
                     break;
                 }
                 code = Convert.ToInt32(readedCode);
-                list_Branch.Add(new Branch(name, code, adress, phoneNumber));
+                listAgents.Add(new Agents(name, code, adress, phoneNumber, birthday));
             }
             input.Close();
         }
-
         public string Name
         {
             get { return name; }
@@ -62,19 +64,17 @@ namespace Course
         {
             get { return phoneNumber; }
         }
-
-        public List<Branch> ListBranch
+        public string Birthday
         {
-            get { return list_Branch; }
+            get { return birthday; }
         }
-
-        public void Display()
+        public void DisplayAgentsInfo()
         {
-            var table = new ConsoleTable("Филиал", "Код филиала", "Адрес", "Телефон");
+            var table = new ConsoleTable("Имя", "Номер телефона", "Адрес", "Код филиала", "Дата рождения");
 
-            for (int i = 0; i < list_Branch.Count; i++)
+            for (int i = 0; i < listAgents.Count; i++)
             {
-                table.AddRow(list_Branch[i].Name, list_Branch[i].Code, list_Branch[i].Adress, list_Branch[i].PhoneNumber);
+                table.AddRow(listAgents[i].Name, listAgents[i].PhoneNumber, listAgents[i].Adress, listAgents[i].Code, listAgents[i].Birthday);
             }
 
             table.Write(Format.Default);
@@ -84,7 +84,7 @@ namespace Course
         {
             string readedCode;
 
-            Console.Write("Филиал: ");
+            Console.Write("ФИО сотрудника: ");
             name = Console.ReadLine();
             Console.Write("Код филиала: ");
             readedCode = Console.ReadLine();
@@ -92,6 +92,8 @@ namespace Course
             adress = Console.ReadLine();
             Console.Write("Телефон: ");
             phoneNumber = Console.ReadLine();
+            Console.Write("Дата рождения: ");
+            birthday = Console.ReadLine();
 
             if (Errors.BranchHasErrors(name, readedCode, adress, phoneNumber) == true)
             {
@@ -99,9 +101,8 @@ namespace Course
                 return;
             }
             code = Convert.ToInt32(readedCode);
-            list_Branch.Add(new Branch(name, code, adress, phoneNumber));
+            listAgents.Add(new Agents(name, code, adress, phoneNumber, birthday));
         }
-
         public void Remove()
         {
             Console.ForegroundColor = ConsoleColor.Blue;
@@ -110,7 +111,7 @@ namespace Course
 
             int i = Convert.ToInt32(Console.ReadLine());
 
-            if (i > list_Branch.Count || i < 0)
+            if (i > listAgents.Count || i < 0)
             {
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("Ошибка: заданные данные отсутствуют");
@@ -118,7 +119,7 @@ namespace Course
             }
             else
             {
-                list_Branch.RemoveAt(i - 1);
+                listAgents.RemoveAt(i - 1);
                 Console.ForegroundColor = ConsoleColor.Blue;
                 Console.WriteLine("[Запись успешно удалена]");
                 Console.ResetColor();
@@ -127,36 +128,44 @@ namespace Course
         }
         public void Sort()
         {
-            BranchActions.SortMessages();
+            AgentsActions sorting = new AgentsActions();
+            sorting.SortMessages();
             Console.Write(">");
             string param = Console.ReadLine();
             Console.Clear();
             if (param == "1")
             {
-                list_Branch =
-                    (from index in list_Branch
+                listAgents =
+                    (from index in listAgents
                      orderby index.Name
                      select index).ToList();
             }
             else if (param == "2")
             {
-                list_Branch =
-                    (from index in list_Branch
+                listAgents =
+                    (from index in listAgents
                      orderby index.Code
                      select index).ToList();
             }
             else if (param == "3")
             {
-                list_Branch =
-                    (from index in list_Branch
+                listAgents =
+                    (from index in listAgents
                      orderby index.Adress
                      select index).ToList();
             }
             else if (param == "4")
             {
-                list_Branch =
-                    (from index in list_Branch
+                listAgents =
+                    (from index in listAgents
                      orderby index.PhoneNumber
+                     select index).ToList();
+            }
+            else if (param == "5")
+            {
+                listAgents =
+                    (from index in listAgents
+                     orderby index.Birthday
                      select index).ToList();
             }
             else
@@ -166,7 +175,6 @@ namespace Course
                 Console.ResetColor();
             }
         }
-
         public void Save()
         {
             string saveFile;
@@ -182,12 +190,13 @@ namespace Course
             saveFile = Console.ReadLine();
 
             StreamWriter input = new StreamWriter(saveFile);
-            for (int i = 0; i < list_Branch.Count; i++)
+            for (int i = 0; i < listAgents.Count; i++)
             {
-                input.WriteLine(list_Branch[i].Name);
-                input.WriteLine(list_Branch[i].Code);
-                input.WriteLine(list_Branch[i].Adress);
-                input.WriteLine(list_Branch[i].PhoneNumber);
+                input.WriteLine(listAgents[i].Name);
+                input.WriteLine(listAgents[i].Code);
+                input.WriteLine(listAgents[i].Adress);
+                input.WriteLine(listAgents[i].PhoneNumber);
+                input.WriteLine(listAgents[i].Birthday);
             }
             input.Close();
             Console.ForegroundColor = ConsoleColor.Blue;
@@ -196,5 +205,5 @@ namespace Course
             Console.WriteLine(saveFile);
             Console.ResetColor();
         }
-    }
+    }//Конец класса
 }

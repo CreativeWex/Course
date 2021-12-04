@@ -96,7 +96,8 @@ namespace Course
         }
         public void Sort()
         {
-            TypeActions.SortMessages();
+            TypeActions sorting = new TypeActions();
+            sorting.SortMessages();
             Console.Write(">");
             string param = Console.ReadLine();
             Console.Clear();

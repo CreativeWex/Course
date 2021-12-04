@@ -162,7 +162,43 @@ namespace Course
 
             Console.WriteLine();
             Console.ResetColor();
-
+        }
+    }
+    class DataMenu
+    {
+        static public void ChosenAgentsMessage()
+        {
+            Console.WriteLine();
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine("Список доступных агентов:\n");
+            Console.ResetColor();
+        }
+        static public void ChosenBranchMessage()
+        {
+            Console.WriteLine();
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine("Список филиалов:\n");
+            Console.ResetColor();
+        }
+        static public void ChosenContractMessage()
+        {
+            Console.WriteLine();
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine("Список контрактов:\n");
+            Console.ResetColor();
+        }
+        static public void ChosenInsuranceType()
+        {
+            Console.WriteLine();
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine("Список типов страхования:\n");
+            Console.ResetColor();
+        }
+        static public void Readed()
+        {
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine("[Данные считаны]");
         }
     }
 }
