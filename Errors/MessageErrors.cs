@@ -93,5 +93,11 @@ namespace Course
             Console.WriteLine($"[!] Ошибка: неверно заданы параметры филиалов \n");
             Console.ResetColor();
         }
+        static public void AgentsError()
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine($"[!] Ошибка: неверно заданы параметры агентов \n");
+            Console.ResetColor();
+        }
     }
 }

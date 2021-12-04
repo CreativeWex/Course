@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Course
 {
-    class BranchActions
+    class TypeActions
     {
         public static void Options()
         {
@@ -79,21 +79,12 @@ namespace Course
             Console.WriteLine("Данные должны заполняться по следующему примеру: ");
             Console.ResetColor();
 
-            Console.WriteLine("Название филиала");
-            Console.WriteLine("Код филиала");
-            Console.WriteLine("Адрес");
-            Console.WriteLine("Номер телефона");
+            Console.WriteLine("Код страхования)Вид страхования");
             Console.WriteLine();
 
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine(new string('-', 32));
-            Console.WriteLine("Щит");
-            Console.WriteLine("2");
-            Console.WriteLine("352471, г. Клявлино, ул. Столяров пер, дом 160, квартира 301");
-            Console.WriteLine("+7 (902) 305-09-96");
-            Console.WriteLine("01");
-            Console.WriteLine(new string('-', 32));
-            Console.WriteLine();
+            Console.WriteLine("1)Страхование от несчастных случаев и болезней");
             Console.ResetColor();
         }
         public static void SortMessages()
@@ -105,36 +96,15 @@ namespace Course
             Console.Write(" [1]");
             Console.ResetColor();
             Console.Write(" - ");
-            Console.WriteLine("[Филиал]");
+            Console.WriteLine("[Код страхования]");
 
             Console.ForegroundColor = ConsoleColor.Blue;
             Console.Write(" [2]");
             Console.ResetColor();
             Console.Write(" - ");
-            Console.WriteLine("[Код филиала]");
-
-            Console.ForegroundColor = ConsoleColor.Blue;
-            Console.Write(" [3]");
-            Console.ResetColor();
-            Console.Write(" - ");
-            Console.WriteLine("[Адресс]");
-
-            Console.ForegroundColor = ConsoleColor.Blue;
-            Console.Write(" [4]");
-            Console.ResetColor();
-            Console.Write(" - ");
-            Console.WriteLine("[Телефон]");
-
-            Console.Write(" Введите");
-            Console.ForegroundColor = ConsoleColor.Blue;
-            Console.Write(" [0]");
-            Console.ResetColor();
-            Console.Write(", чтобы ");
-            Console.ForegroundColor = ConsoleColor.Blue;
-            Console.WriteLine("[Закрыть меню]");
-            Console.ResetColor();
+            Console.WriteLine("[Вид страхования]");
         }
-        public static void BranchMaster(BuildBranchList objectBranch)
+        public  static void TypeMaster(BuildInsuranceTypeList objectType)
         {
             int submenu = 10;
 
@@ -152,36 +122,36 @@ namespace Course
                 else if (submenu == 1)
                 {
                     Console.Clear();
-                    objectBranch.Sort();
-                    objectBranch.Display();
+                    objectType.Sort();
+                    objectType.Display();
                     Options();
                 }
                 else if (submenu == 2)
                 {
                     Console.Clear();
-                    objectBranch.Add();
-                    objectBranch.Display();
+                    objectType.Add();
+                    objectType.Display();
                     Options();
                 }
                 else if (submenu == 3)
                 {
                     Console.Clear();
-                    objectBranch.Remove();
+                    objectType.Remove();
                     Options();
-                    objectBranch.Display();
+                    objectType.Display();
                 }
                 else if (submenu == 4)
                 {
                     Console.Clear();
-                    BranchActions.Note();
-                    objectBranch.Display();
+                    Note();
+                    objectType.Display();
                     Options();
                 }
 
                 else if (submenu == 5)
                 {
                     Console.Clear();
-                    objectBranch.Save();
+                    objectType.Save();
                     Options();
                 }
                 else

@@ -134,7 +134,65 @@ namespace Course
             }
             return true;
         }
-        public static bool BranchHasErrors(string name, string readedCode, string adress, string phoneNumber)
+        public static bool BuildHasErrors(string name, string readedCode, string adress, string phoneNumber, string birthday)
+        {
+            bool nameCorrect = true;
+            bool codeCorrect = true;
+            bool phoneNumberCorrect = true;
+            bool birthdayCorrect = true;
+            int code;
+
+            if (StrHasOnlyLetters(name) == false)
+            {
+                nameCorrect = false;
+            }
+
+            if (!Int32.TryParse(readedCode, out code))
+            {
+                codeCorrect = false;
+                MessageErrors.ErrorBranchName();
+            }
+            if (Errors.IsNegative(code))
+            {
+                codeCorrect = false;
+                MessageErrors.ErrorBranchName();
+            }
+
+            if (Errors.CheckPhoneNumber(phoneNumber))
+            {
+                phoneNumberCorrect = false;
+                MessageErrors.ErrorPhoneNumber();
+            }
+            if (Date(birthday) == false)
+            {
+                birthdayCorrect = false;
+            }
+
+            if (nameCorrect == false)
+            {
+                MessageErrors.ViewError(name);
+            }
+            if (codeCorrect == false)
+            {
+                MessageErrors.ViewError(code);
+            }
+            if (phoneNumberCorrect == false)
+            {
+                MessageErrors.ViewError(phoneNumber);
+            }
+            if (birthdayCorrect == false)
+            {
+                MessageErrors.ViewError(birthday);
+            }
+
+            if (nameCorrect == true && codeCorrect == true && phoneNumberCorrect == true && birthdayCorrect == true)
+            {
+                return false;
+            }
+
+            return true;
+        } //Agents
+        public static bool BranchHasErrors(string name, string readedCode, string adress, string phoneNumber) //Branch
         {
             bool nameCorrect = true;
             bool codeCorrect = true;
@@ -170,7 +228,6 @@ namespace Course
 
             return true;
         }
-
         public static bool CheckName(string str) //Проверка поступающих строк
         {
             for (int i = 0; i < str.Length; i++)
@@ -241,12 +298,10 @@ namespace Course
             {
                 return false;
             }
-
             if (str.Length < 10)
             {
                 return false;
             }
-
             string[] arr = str.Split('.');
             if (Convert.ToInt32(arr[0]) > 31 || Convert.ToInt32(arr[0]) <= 0)
             {
@@ -256,7 +311,6 @@ namespace Course
             {
                 return false;
             }
-
             return true;
         }
     }

@@ -58,10 +58,10 @@ namespace Course
                 else if (submenu == 3)
                 {
                     Console.Clear();
-                    DataMenu.ChosenBranchMessage();
+                    DataMenu.ChosenAgentsMessage();
                     BuildAgentsList objectAgents = new BuildAgentsList();
                     objectAgents.DisplayAgentsInfo();
-                    MainMenu.Data();
+                    AgentsActions.AgentsMaster(objectAgents);
                 }
                 else if (submenu == 4)
                 {
@@ -69,7 +69,7 @@ namespace Course
                     DataMenu.ChosenInsuranceType();
                     BuildInsuranceTypeList objectType = new BuildInsuranceTypeList();
                     objectType.Display();
-                    MainMenu.Data();
+                    TypeActions.TypeMaster(objectType);
                 }
                 else
                 {
