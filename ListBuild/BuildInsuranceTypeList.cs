@@ -11,13 +11,17 @@ namespace Course
     class BuildInsuranceTypeList
     {
         public List<InsuranceType> list_InsuranceType = new List<InsuranceType>();
-        string filename = "SourceType.txt";
         string name;
         string type;
+        string filename;
         public BuildInsuranceTypeList()
         {
             bool errors = false;
-            Errors.FileHasErrors(filename, ref errors);
+            Console.WriteLine("Файл для считывания (по умолчанию SourceType.txt):");
+            Console.Write("> ");
+            filename = Console.ReadLine();
+            if (Errors.FileHasErrors(filename, ref errors))
+                return;
             StreamReader input = new StreamReader(filename);
 
             while (!(input.EndOfStream))

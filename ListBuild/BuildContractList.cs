@@ -11,7 +11,7 @@ namespace Course
     class BuildContractList
     {
         public List<Contract> list_Contract = new List<Contract>();
-        string filename = "SourceContract.txt";
+        string filename;
         string numberOfContract; //Номер договора
         string date; // Дата заключения
         int summ; // Страховая сумма
@@ -19,6 +19,7 @@ namespace Course
         int branch; // Филиал
         string type;
         string name;
+
         public BuildContractList()
         {
 
@@ -26,7 +27,11 @@ namespace Course
             string readedSum;
             string readedTariffRate;
             string readedBranch;
-            Errors.FileHasErrors(filename, ref errors);
+            Console.WriteLine("Файл для считывания (по умолчанию SourceContract.txt):");
+            Console.Write("> ");
+            filename = Console.ReadLine();
+            if (Errors.FileHasErrors(filename, ref errors))
+                return;
             StreamReader input = new StreamReader(filename);
 
             while (!(input.EndOfStream))
@@ -62,7 +67,6 @@ namespace Course
             table.Write(Format.Default);
             Console.WriteLine();
         }
-
         public string NumberOfContract
         {
             get { return numberOfContract; }
@@ -213,7 +217,6 @@ namespace Course
                 Console.ResetColor();
             }
         }
-
         public void Save()
         {
             string saveFile;

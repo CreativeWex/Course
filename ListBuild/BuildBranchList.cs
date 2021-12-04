@@ -11,7 +11,7 @@ namespace Course
     class BuildBranchList
     {
         public List<Branch> list_Branch = new List<Branch>();
-        string filename = "SourceBranch.txt";
+        string filename;
         string name;
         int code;
         string adress;
@@ -21,7 +21,11 @@ namespace Course
         {
             bool errors = false;
             string readedCode;
-            Errors.FileHasErrors(filename, ref errors);
+            Console.WriteLine("Файл для считывания (по умолчанию SourceBranch.txt):");
+            Console.Write("> ");
+            filename = Console.ReadLine();
+            if (Errors.FileHasErrors(filename, ref errors))
+                return;
             StreamReader input = new StreamReader(filename);
 
             while (!(input.EndOfStream))

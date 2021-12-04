@@ -136,7 +136,7 @@ namespace Course
                 else if (submenu == 4)
                 {
                     Console.Clear();
-                    BranchActions.Note();
+                    Note();
                     objectAgents.DisplayAgentsInfo();
                     Options();
                 }

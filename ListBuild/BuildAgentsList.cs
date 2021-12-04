@@ -11,7 +11,7 @@ namespace Course
     class BuildAgentsList
     {
         public List<Agents> listAgents = new List<Agents>();
-        string filename = "SourceAgents.txt";
+        string filename;
         string name;
         int code;
         string adress;
@@ -23,7 +23,11 @@ namespace Course
             
             bool errors = false;
             string readedCode;
-            Errors.FileHasErrors(filename, ref errors);
+            Console.WriteLine("Файл для считывания (по умолчанию SourceAgents.txt):");
+            Console.Write("> ");
+            filename = Console.ReadLine();
+            if (Errors.FileHasErrors(filename, ref errors))
+                return;
             StreamReader input = new StreamReader(filename);
 
             while (!(input.EndOfStream))

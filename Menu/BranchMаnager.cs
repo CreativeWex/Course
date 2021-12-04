@@ -13,7 +13,7 @@ namespace Course
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("[Меню]");
             Console.ResetColor();
-
+            
             Console.Write(" Введите");
             Console.ForegroundColor = ConsoleColor.Blue;
             Console.Write(" [1]");
