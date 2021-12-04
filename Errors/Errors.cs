@@ -108,35 +108,68 @@ namespace Course
                 summCorrect = false;
             }
 
+            if (numberOfContractCorrect == false)
+            {
+                MessageErrors.ViewError(numberOfContract);
+            }
+
+            if (dateCorrect == false)
+            {
+                MessageErrors.ViewError(date);
+            }
+
+            if (summCorrect == false)
+            {
+                MessageErrors.ViewError(summ);
+            }
+
+            if (tariffRateCorrect == false)
+            {
+                MessageErrors.ViewError(tariffRate);
+            }
+
             if (numberOfContractCorrect == true && dateCorrect == true && summCorrect == true && tariffRateCorrect == true)
             {
                 return false;
             }
             return true;
         }
-        //public static bool BuildHasErrors(string name, int code, string adress, string phoneNumber)
-        //{
-        //    if (CatchErrors.CheckName(name))
-        //    {
-        //        MessageErrors.ErrorString();
-        //    }
+        public static bool BranchHasErrors(string name, string readedCode, string adress, string phoneNumber)
+        {
+            bool nameCorrect = true;
+            bool codeCorrect = true;
+            bool adressCorrect = true;
+            bool phoneNumberCorrect = true;
+            int code;
 
-        //    if (!Int32.TryParse(input.ReadLine(), out code))
-        //    {
-        //        MessageErrors.ErrorBranchName();
-        //    }
-        //    if (CatchErrors.IsNegative(code))
-        //    {
-        //        MessageErrors.ErrorBranchName();
-        //    }
+            if (StrHasOnlyLetters(name) == false)
+            {
+                nameCorrect = false;
+            }
 
-        //    if (CatchErrors.CheckPhoneNumber(phoneNumber))
-        //    {
-        //        MessageErrors.ErrorPhoneNumber();
-        //    }
+            if (!Int32.TryParse(readedCode, out code))
+            {
+                codeCorrect = false;
+                MessageErrors.ErrorBranchName();
+            }
+            if (Errors.IsNegative(code))
+            {
+                codeCorrect = false;
+                MessageErrors.ErrorBranchName();
+            }
 
-        //    return true;
-        //}
+            if (Errors.CheckPhoneNumber(phoneNumber))
+            {
+                phoneNumberCorrect = false;
+                MessageErrors.ErrorPhoneNumber();
+            }
+            if (nameCorrect == true && codeCorrect == true && adressCorrect == true && phoneNumberCorrect == true)
+            {
+                return false;
+            }
+
+            return true;
+        }
 
         public static bool CheckName(string str) //Проверка поступающих строк
         {
@@ -165,7 +198,7 @@ namespace Course
                 }
             }
 
-            if (str.Length != 18)
+            if (str.Length != 11)
             {
                 return true;
             }
@@ -201,31 +234,26 @@ namespace Course
                 }
                 if ((str[i] >= 'a' && str[i] <= 'A') || (str[i] >= 'a' && str[i] <= 'A'))
                 {
-                    Console.WriteLine("1");
                     return false;
                 }
             }
             if (dotCount != 2)
             {
-                Console.WriteLine("2");
                 return false;
             }
 
             if (str.Length < 10)
             {
-                Console.WriteLine("3");
                 return false;
             }
 
             string[] arr = str.Split('.');
             if (Convert.ToInt32(arr[0]) > 31 || Convert.ToInt32(arr[0]) <= 0)
             {
-                Console.WriteLine("4");
                 return false;
             }
             if (Convert.ToInt32(arr[1]) > 12 || Convert.ToInt32(arr[0]) <= 0)
             {
-                Console.WriteLine("5");
                 return false;
             }
 

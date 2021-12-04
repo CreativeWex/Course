@@ -20,7 +20,7 @@ namespace Course
             Console.ResetColor();
             Console.Write(", для ");
             Console.ForegroundColor = ConsoleColor.Blue;
-            Console.WriteLine("[Работа с данными]");
+            Console.WriteLine("[Работы с данными]");
             Console.ResetColor();
 
             Console.Write(" Введите");

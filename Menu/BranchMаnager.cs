@@ -6,44 +6,7 @@ using System.Threading.Tasks;
 
 namespace Course
 {
-    class DataMenu
-    {
-        static public void ChosenAgentsMessage()
-        {
-            Console.WriteLine();
-            Console.ForegroundColor = ConsoleColor.Blue;
-            Console.WriteLine("Список доступных агентов:\n");
-            Console.ResetColor();
-        }
-        static public void ChosenBranchMessage()
-        {
-            Console.WriteLine();
-            Console.ForegroundColor = ConsoleColor.Blue;
-            Console.WriteLine("Список филиалов:\n");
-            Console.ResetColor();
-        }
-        static public void ChosenContractMessage()
-        {
-            Console.WriteLine();
-            Console.ForegroundColor = ConsoleColor.Blue;
-            Console.WriteLine("Список контрактов:\n");
-            Console.ResetColor();
-        }
-        static public void ChosenInsuranceType()
-        {
-            Console.WriteLine();
-            Console.ForegroundColor = ConsoleColor.Blue;
-            Console.WriteLine("Список типов страхования:\n");
-            Console.ResetColor();
-        }
-        static public void Readed()
-        {
-            Console.Clear();
-            Console.ForegroundColor = ConsoleColor.Blue;
-            Console.WriteLine("[Данные считаны]");
-        }
-    }
-    class ContractActions
+    class BranchActions
     {
         public static void Options()
         {
@@ -110,81 +73,30 @@ namespace Course
             Console.WriteLine("[Закрыть меню]");
             Console.ResetColor();
         }
-        public static void SortMessages()
-        {
-            Console.ForegroundColor = ConsoleColor.Blue;
-            Console.WriteLine("Введите поля, по которому нужно отсортировать: ");
-
-            Console.ForegroundColor = ConsoleColor.Blue;
-            Console.Write(" [1]");
-            Console.ResetColor();
-            Console.Write(" - ");
-            Console.WriteLine("[Номер договора]");
-
-            Console.ForegroundColor = ConsoleColor.Blue;
-            Console.Write(" [2]");
-            Console.ResetColor();
-            Console.Write(" - ");
-            Console.WriteLine("[Дата заключения]");
-
-            Console.ForegroundColor = ConsoleColor.Blue;
-            Console.Write(" [3]");
-            Console.ResetColor();
-            Console.Write(" - ");
-            Console.WriteLine("[Страховая сумма]");
-
-            Console.ForegroundColor = ConsoleColor.Blue;
-            Console.Write(" [4]");
-            Console.ResetColor();
-            Console.Write(" - ");
-            Console.WriteLine("[Тарифная ставка]");
-
-            Console.ForegroundColor = ConsoleColor.Blue;
-            Console.Write(" [5]");
-            Console.ResetColor();
-            Console.Write(" - ");
-            Console.WriteLine("[Код филиала]");
-
-            Console.ForegroundColor = ConsoleColor.Blue;
-            Console.Write(" [6]");
-            Console.ResetColor();
-            Console.Write(" - ");
-            Console.WriteLine("[Вид страхования]");
-
-            Console.ForegroundColor = ConsoleColor.Blue;
-            Console.Write(" [7]");
-            Console.ResetColor();
-            Console.Write(" - ");
-            Console.WriteLine("[Имя Агента]");
-        }
         public static void Note()
         {
             Console.ForegroundColor = ConsoleColor.Blue;
             Console.WriteLine("Данные должны заполняться по следующему примеру: ");
             Console.ResetColor();
 
-            Console.WriteLine("Дата заключения");
-            Console.WriteLine("Страховая сумма");
-            Console.WriteLine("Тарифная ставка");
+            Console.WriteLine("Назваие филиала");
             Console.WriteLine("Код филиала");
-            Console.WriteLine("Вид страхования");
-            Console.WriteLine("Имя Агента");
+            Console.WriteLine("Адресс");
+            Console.WriteLine("Номер телефона");
             Console.WriteLine();
 
             Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine(new string('-',32));
-            Console.WriteLine("601100");
-            Console.WriteLine("14.09.2015");
-            Console.WriteLine("175000");
-            Console.WriteLine("40,1");
+            Console.WriteLine(new string('-', 32));
+            Console.WriteLine("Щит");
+            Console.WriteLine("2");
+            Console.WriteLine("352471, г. Клявлино, ул. Столяров пер, дом 160, квартира 301");
+            Console.WriteLine("+7 (902) 305-09-96");
             Console.WriteLine("01");
-            Console.WriteLine("Медицинское страхование");
-            Console.WriteLine("Горбачёв Аким Онисимович");
             Console.WriteLine(new string('-', 32));
             Console.WriteLine();
             Console.ResetColor();
         }
-        public static void ContractMaster(BuildContractList objectContract)
+        public static void BranchMaster(BuildBranchList objectBranch)
         {
             int submenu = 10;
 
@@ -202,35 +114,36 @@ namespace Course
                 else if (submenu == 1)
                 {
                     Console.Clear();
-                    objectContract.Sort();
-                    objectContract.Display();
+                    objectBranch.Sort();
+                    objectBranch.Display();
                     Options();
                 }
                 else if (submenu == 2)
                 {
                     Console.Clear();
-                    objectContract.Add();
+                    objectBranch.Add();
+                    objectBranch.Display();
                     Options();
                 }
                 else if (submenu == 3)
                 {
                     Console.Clear();
-                    objectContract.Remove();
+                    objectBranch.Remove();
                     Options();
-                    objectContract.Display();
+                    objectBranch.Display();
                 }
                 else if (submenu == 4)
                 {
                     Console.Clear();
-                    ContractActions.Note();
-                    objectContract.Display();
+                    BranchActions.Note();
+                    objectBranch.Display();
                     Options();
                 }
 
                 else if (submenu == 5)
                 {
                     Console.Clear();
-                    objectContract.Save();
+                    objectBranch.Save();
                     Options();
                 }
                 else
@@ -240,6 +153,44 @@ namespace Course
                     Console.ResetColor();
                 }
             }
+        }
+        public static void SortMessages()
+        {
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine("Введите поля, по которому нужно отсортировать: ");
+
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.Write(" [1]");
+            Console.ResetColor();
+            Console.Write(" - ");
+            Console.WriteLine("[Филиал]");
+
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.Write(" [2]");
+            Console.ResetColor();
+            Console.Write(" - ");
+            Console.WriteLine("[Код филиала]");
+
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.Write(" [3]");
+            Console.ResetColor();
+            Console.Write(" - ");
+            Console.WriteLine("[Адресс]");
+
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.Write(" [4]");
+            Console.ResetColor();
+            Console.Write(" - ");
+            Console.WriteLine("[Телефон]");
+
+            Console.Write(" Введите");
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.Write(" [0]");
+            Console.ResetColor();
+            Console.Write(", чтобы ");
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine("[Закрыть меню]");
+            Console.ResetColor();
         }
     }
 }

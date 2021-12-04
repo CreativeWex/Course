@@ -52,6 +52,16 @@ namespace Course
             }
             input.Close();
         } // конец конструктора
+        public void Display()
+        {
+            var table = new ConsoleTable("Номер договора", "Дата заключения", "Страховая сумма", "Тарифная ставка", "Код филиала", "Вид страхования", "Имя Агента");
+            for (int i = 0; i < list_Contract.Count; i++)
+            {
+                table.AddRow(list_Contract[i].NumberOfContract, list_Contract[i].Date, list_Contract[i].Summ, list_Contract[i].TariffRate, list_Contract[i].Branch, list_Contract[i].Type, list_Contract[i].Name);
+            }
+            table.Write(Format.Default);
+            Console.WriteLine();
+        }
 
         public string NumberOfContract
         {
@@ -81,16 +91,12 @@ namespace Course
         {
             get { return name; }
         }
-
+        public List<Contract> List_Contract
+        {
+            get { return list_Contract; }
+        }
         public void Add()
         {
-            string numberOfContract; //Номер договора
-            string date; // Дата заключения
-            int summ; // Страховая сумма
-            double tariffRate; // Тарифная ставка
-            int branch; // Филиал
-            string type;
-            string name;
             string readedSum;
             string readedTariffRate;
             string readedBranch;
@@ -145,20 +151,10 @@ namespace Course
             }
             Console.WriteLine();
         }
-        public void Display()
-        {
-            var table = new ConsoleTable("Номер договора", "Дата заключения", "Страховая сумма", "Тарифная ставка", "Код филиала", "Вид страхования", "Имя Агента");
-            for (int i = 0; i < list_Contract.Count; i++)
-            {
-                table.AddRow(list_Contract[i].NumberOfContract, list_Contract[i].Date, list_Contract[i].Summ, list_Contract[i].TariffRate, list_Contract[i].Branch, list_Contract[i].Type, list_Contract[i].Name);
-            }
-            table.Write(Format.Default);
-            Console.WriteLine();
-        }
         public void Sort()
         {
             ContractActions.SortMessages();
-            Console.WriteLine(">");
+            Console.Write("> ");
             string param = Console.ReadLine();
             Console.Clear();
             if (param == "1")
@@ -245,7 +241,7 @@ namespace Course
             }
             input.Close();
             Console.ForegroundColor = ConsoleColor.Blue;
-            Console.Write("Данные успешно сохранены в");
+            Console.Write("Данные успешно сохранены в ");
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine(saveFile);
             Console.ResetColor();

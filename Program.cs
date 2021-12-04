@@ -52,8 +52,8 @@ namespace Course
                     Console.Clear();
                     DataMenu.ChosenBranchMessage();
                     BuildBranchList objectBranch = new BuildBranchList();
-                    objectBranch.DisplayBranchInfo();
-                    MainMenu.Data();
+                    objectBranch.Display();
+                    BranchActions.BranchMaster(objectBranch);
                 }
                 else if (submenu == 3)
                 {

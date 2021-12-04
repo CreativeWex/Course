@@ -69,16 +69,28 @@ namespace Course
             Console.WriteLine($"[!] Ошибка: неверно заданы параметры договора \n");
             Console.ResetColor();
         }
-        static public void ContractError(string str)
+        static public void ViewError(string str)
         {
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine($"[!] Ошибка: неверно задан параметр {str} \n");
             Console.ResetColor();
         }
-        static public void ContractError(int str)
+        static public void ViewError(int str)
         {
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine($"[!] Ошибка: неверно задан параметр {str} \n");
+            Console.ResetColor();
+        }
+        static public void ViewError(double str)
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine($"[!] Ошибка: неверно задан параметр {str} \n");
+            Console.ResetColor();
+        }
+        static public void BranchError()
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine($"[!] Ошибка: неверно заданы параметры филиалов \n");
             Console.ResetColor();
         }
     }
