@@ -165,6 +165,7 @@ namespace Course
             {
                 return name;
             }
+            set { name = value; }
         }
     }
 }

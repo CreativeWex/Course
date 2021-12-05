@@ -83,15 +83,6 @@ namespace Course
                 }
             }
         }
-        //public static void Salary()
-        //{
-        //    int errorFlag = 0;
-
-        //    Console.Clear();
-        //    MainMenu.SalaryInfo();
-        //    BuildContractList source = new BuildContractList(ref errorFlag);
-        //    BuildSalary ob = new BuildSalary();
-        //}
         public static void Author()
         {
             Console.Clear();

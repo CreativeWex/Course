@@ -71,6 +71,16 @@ namespace Course
             Console.WriteLine();
 
             Console.Write(" Введите");
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.Write(" [6]");
+            Console.ResetColor();
+            Console.Write(", чтобы ");
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.Write("[Рассчитать зарплату]");
+            Console.ResetColor();
+            Console.WriteLine();
+
+            Console.Write(" Введите");
             Console.ForegroundColor = ConsoleColor.Blue;
             Console.Write(" [0]");
             Console.ResetColor();
@@ -184,12 +194,16 @@ namespace Course
                     objectAgents.DisplayAgentsInfo();
                     Options();
                 }
-
                 else if (submenu == 5)
                 {
                     Console.Clear();
                     objectAgents.Save();
                     Options();
+                }
+                else if (submenu == 6)
+                {
+                    Console.Clear();
+                    BuildSalary ob = new BuildSalary();
                 }
                 else
                 {
@@ -442,6 +456,16 @@ namespace Course
             Console.WriteLine();
 
             Console.Write(" Введите");
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.Write(" [6]");
+            Console.ResetColor();
+            Console.Write(", подробнее рассмотреть ");
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.Write("[Виды страхования]");
+            Console.WriteLine();
+            Console.ResetColor();
+
+            Console.Write(" Введите");
             Console.ForegroundColor = ConsoleColor.Blue;
             Console.Write(" [0]");
             Console.ResetColor();
@@ -480,6 +504,66 @@ namespace Course
             Console.ResetColor();
             Console.Write(" - ");
             Console.WriteLine("[Вид страхования]");
+        }
+        public void Info()
+        {
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine(new string('-', 237));
+
+            Console.Write("Страхование от несчастных случаев");
+            Console.ResetColor();
+            Console.WriteLine(" – это один из действительных современных финансовых инструментов," +
+                " с помощью которого граждане могут защитить свои экономические интересы в случае непредвиденных затрат, возникающих при заболевании, травме или гибели человека.\n");
+
+            Console.Write("Цель ");
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.Write("медицинского страхования ");
+            Console.ResetColor();
+            Console.WriteLine(" - гарантировать гражданам при возникновении страхового случая" +
+                " получение медицинской помощи за счет накопленных средств и финансировать профилактические мероприятия. Медицинское" +
+                " страхование осуществляется в двух видах: обязательном и добровольном.\n");
+
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.Write("\nСтрахование средств наземного транспорта");
+            Console.ResetColor();
+            Console.WriteLine(" представляет собой совокупность видов страхования," +
+                " предусматривающих обязанности страховщика по страховым выплатам в размере полной или частичной компенсации ущерба, нанесенного объекту страхования.\n");
+
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.Write("\nДоговор страхования средств железнодорожного транспорта");
+            Console.ResetColor();
+            Console.WriteLine(" – это защита от широкого спектра страховых событий, таких как крушение, хищение, авария, пожар или взрыв.\n");
+
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.Write("\nСтрахование грузов");
+            Console.ResetColor();
+            Console.WriteLine(" — один из видов имущественного страхования, имеющий целью защиту имущественных интересов владельцев грузов на случай" +
+                " наступления убытков, вызванных различного рода происшествиями в процессе транспортировки груза.\n");
+
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.Write("\nСтрахование имущества юридических лиц");
+            Console.ResetColor();
+            Console.WriteLine(" - это гарантия быстрого получения средств на проведение восстановительных работ при наступлении" +
+                " страхового случая, источник финансирования текущих расходов на время перерыва в процессе производства и защита предприятия.\n");
+
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.Write("\nСтрахование имущества");
+            Console.ResetColor();
+            Console.WriteLine(" - вид страхования, в котором в качестве объекта страхования выступает имущественный интерес, связанный с владением, пользованием и распоряжением имуществом. \n");
+
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.Write("\nСтрахование гражданской ответственности владельцев автотранспортных средств");
+            Console.ResetColor();
+            Console.WriteLine(" - объектом страхования являются имущественные интересы, связанные с риском гражданской ответственности владельца" +
+                " транспортного средства по обязательствам, возникающим вследствие причинения вреда жизни, здоровью или имуществу потерпевших при использовании транспортного средства. \n");
+
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.Write("\nСтрахование финансовых рисков");
+            Console.ResetColor();
+            Console.WriteLine(" представляет собой защиту имущественных интересов предприятия при наступлении страхового события\n");
+            Console.WriteLine(new string('-', 237));
+            Console.WriteLine();
+            Console.ResetColor();
         }
         public void TypeMaster(BuildInsuranceTypeList objectType)
         {
@@ -524,11 +608,16 @@ namespace Course
                     objectType.Display();
                     Options();
                 }
-
                 else if (submenu == 5)
                 {
                     Console.Clear();
                     objectType.Save();
+                    Options();
+                }
+                else if (submenu == 6)
+                {
+                    Console.Clear();
+                    Info();
                     Options();
                 }
                 else
