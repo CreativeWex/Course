@@ -89,43 +89,62 @@ namespace Course
         }
         static void Summary(List<Salary> agentSalary, BuildContractList contract)
         {
-            List<Salary> Final = new List<Salary>();
-            int k = 0;
-            agentSalary =
-                    (from index in agentSalary
-                     orderby index.Name
-                     select index).ToList();
+            try
+            {
+                List<Salary> Final = new List<Salary>();
+                int k = 0;
+                agentSalary =
+                        (from index in agentSalary
+                         orderby index.Name
+                         select index).ToList();
 
-            Final.Add(new Salary(agentSalary[0].Name, agentSalary[0].InsuranceFee * CountPercent(contract.List_Contract[0].Type)));
-            var table = new ConsoleTable("Сотрудник", "Заработная плата");
-            for (int i = 0; i < agentSalary.Count; i++)
-            {
-                if (agentSalary[i].Name == Final[k].Name)
+                Final.Add(new Salary(agentSalary[0].Name, agentSalary[0].InsuranceFee * CountPercent(contract.List_Contract[0].Type)));
+                var table = new ConsoleTable("Сотрудник", "Заработная плата");
+                for (int i = 0; i < agentSalary.Count; i++)
                 {
-                    Final[k].InsuranceFee += agentSalary[i].InsuranceFee * CountPercent(contract.List_Contract[i].Type);
+                    if (agentSalary[i].Name == Final[k].Name)
+                    {
+                        Final[k].InsuranceFee += agentSalary[i].InsuranceFee * CountPercent(contract.List_Contract[i].Type);
+                    }
+                    else
+                    {
+                        k++;
+                        Final.Add(new Salary(agentSalary[i].Name, agentSalary[i].InsuranceFee * CountPercent(contract.List_Contract[i].Type)));
+                    }
                 }
-                else
+                for (int i = 0; i < Final.Count; i++)
                 {
-                    k++;
-                    Final.Add(new Salary(agentSalary[i].Name, agentSalary[i].InsuranceFee * CountPercent(contract.List_Contract[i].Type)));
+                    table.AddRow(Final[i].Name, Final[i].InsuranceFee);
                 }
+                Console.ForegroundColor = ConsoleColor.Blue;
+                Console.WriteLine("Заработная плата сотрудников в соответствии с закрытыми контрактами");
+                Console.ResetColor();
+                table.Write();
+                Console.Write(" Введите");
+                Console.ForegroundColor = ConsoleColor.Blue;
+                Console.Write(" [0]");
+                Console.ResetColor();
+                Console.Write(", чтобы ");
+                Console.ForegroundColor = ConsoleColor.Blue;
+                Console.WriteLine("[Вернуться]");
+                Console.ResetColor();
             }
-            for (int i = 0; i < Final.Count; i++)
+            
+            catch (Exception e)
             {
-                table.AddRow(Final[i].Name, Final[i].InsuranceFee);
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine($"Ошибка: {e}");
+
+                Console.ForegroundColor = ConsoleColor.Blue;
+                Console.Write(" Введите");
+                Console.ForegroundColor = ConsoleColor.Blue;
+                Console.Write(" [0]");
+                Console.ResetColor();
+                Console.Write(", чтобы ");
+                Console.ForegroundColor = ConsoleColor.Blue;
+                Console.WriteLine("[Вернуться]");
+                Console.ResetColor();
             }
-            Console.ForegroundColor = ConsoleColor.Blue;
-            Console.WriteLine("Заработная плата сотрудников в соответствии с закрытыми контрактами");
-            Console.ResetColor();
-            table.Write();
-            Console.Write(" Введите");
-            Console.ForegroundColor = ConsoleColor.Blue;
-            Console.Write(" [0]");
-            Console.ResetColor();
-            Console.Write(", чтобы ");
-            Console.ForegroundColor = ConsoleColor.Blue;
-            Console.WriteLine("[Вернуться]");
-            Console.ResetColor();
         }
     }
 }
